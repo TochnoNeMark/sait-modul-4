@@ -1,0 +1,15 @@
+@media(max-width: 900px){
+  .bento{
+    grid-template-areas:
+  "plane plane plane plane plane tile"
+  "fat fat fat meme meme meme"
+  "fat fat fat meme meme meme"
+  "smalll smalll big big big big"
+  "long long long fin fin fin";
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  max-width: 658px;
+  }
+  .frame-3 img{transform: rotate(180deg);}
+  .frame-8{flex-direction: row;}
+}
