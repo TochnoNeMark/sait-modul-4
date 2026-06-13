@@ -207,6 +207,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--c-white);
   font-weight: 800;
   line-height: 1.1;
+  border: clamp(3px, 0.35vw, 5px) solid var(--c-white);
 }
 .hero__pill--title {
   top: 11.7%;
@@ -273,3 +274,245 @@ a { text-decoration: none; color: inherit; }
   color: var(--c-accent);
   opacity: .6;
 }
+
+/* ===== DIV 2 — БИЛЕТЫ ===== */
+.section--booking { padding-top: clamp(16px, 3vw, 40px); }
+
+.booking__title {
+  display: inline-flex;
+  align-items: center;
+  background: var(--c-pill);
+  border-radius: 15px;
+  padding: clamp(8px, 1vw, 14px) clamp(20px, 2.5vw, 40px);
+  font-weight: 600;
+  font-size: clamp(28px, 4.4vw, 64px);
+  margin-bottom: clamp(16px, 2vw, 28px);
+}
+
+/* Вкладки */
+.booking__tabs {
+  display: flex;
+  background: var(--c-home);
+  border: 3px solid #000;
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+}
+.tab {
+  flex: 1 1 0;
+  padding: clamp(14px, 2vw, 30px) clamp(4px, 1vw, 12px);
+  background: transparent;
+  border: none;
+  border-right: 1px solid #000;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
+  font-size: clamp(13px, 1.6vw, 30px);
+  color: var(--c-white);
+  cursor: pointer;
+  transition: background .2s;
+  line-height: 1.1;
+}
+.tab:last-child { border-right: none; }
+.tab.is-active { background: var(--c-header); }
+.tab:not(.is-active):hover { background: #b4ccff; }
+
+/* Панель формы */
+.booking__panel {
+  background: var(--c-header);
+  border: 2px solid #000;
+  border-top: none;
+  border-radius: 0 0 14px 14px;
+  padding: clamp(16px, 2.2vw, 32px);
+}
+
+/* Тип: Билет / Трансфер / Отель */
+.booking__toggles {
+  display: flex;
+  gap: clamp(12px, 1.8vw, 28px);
+  margin-bottom: clamp(16px, 2vw, 28px);
+}
+.toggle {
+  padding: clamp(7px, 0.8vw, 11px) clamp(18px, 2vw, 32px);
+  background: var(--c-home);
+  border: none;
+  border-radius: 999px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 300;
+  font-size: clamp(14px, 1.5vw, 24px);
+  color: #000;
+  cursor: pointer;
+  transition: background .2s, font-weight .2s;
+}
+.toggle.is-active { font-weight: 600; }
+.toggle:not(.is-active):hover { background: #b4ccff; }
+
+/* Строка полей */
+.booking__form {
+  display: flex;
+  align-items: stretch;
+  background: var(--c-home);
+  border-radius: 14px;
+  min-height: clamp(76px, 8vw, 112px);
+}
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #000;
+}
+.field:last-child { border-right: none; }
+.field--place { flex: 1.4 1 0; }
+.field--date { flex: 1.2 1 0; }
+
+.field__btn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.8vw, 12px);
+  padding: clamp(12px, 1.4vw, 20px) clamp(14px, 1.6vw, 24px);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: "Montserrat Alternates", sans-serif;
+}
+.field__value {
+  font-weight: 600;
+  font-size: clamp(14px, 1.5vw, 24px);
+  color: #000;
+}
+.field__value--placeholder { font-weight: 600; }
+.field__code {
+  font-weight: 600;
+  font-size: clamp(13px, 1.4vw, 24px);
+  color: #b2b2b2;
+  margin-left: auto;
+}
+
+/* Кнопка swap */
+.swap {
+  flex: 0 0 auto;
+  width: clamp(48px, 5vw, 90px);
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  border-right: 1px solid #000;
+  cursor: pointer;
+  color: #000;
+}
+.swap svg { width: clamp(34px, 3.5vw, 56px); }
+.swap:hover { color: var(--c-header); }
+
+/* Кнопка Найти */
+.booking__submit {
+  display: block;
+  margin: clamp(20px, 3vw, 44px) 0 0 auto;
+  padding: clamp(8px, 1vw, 12px) clamp(28px, 3.5vw, 64px);
+  background: var(--c-home);
+  border: none;
+  border-radius: 11px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 600;
+  font-size: clamp(22px, 3vw, 45px);
+  color: #000;
+  cursor: pointer;
+  transition: background .2s, transform .1s;
+}
+.booking__submit:hover { background: #b4ccff; }
+.booking__submit:active { transform: scale(.97); }
+
+/* ===== Выпадающий список аэропортов ===== */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 50;
+  min-width: 100%;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--c-white);
+  border: 2px solid #000;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.2);
+  padding: 6px;
+}
+.dropdown[hidden] { display: none; }
+.dropdown__opt {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: clamp(13px, 1.1vw, 16px);
+  white-space: nowrap;
+}
+.dropdown__opt:hover, .dropdown__opt.is-current { background: #e9f0ff; }
+.dropdown__opt b { font-weight: 600; }
+.dropdown__opt span { color: #b2b2b2; margin-left: auto; }
+
+/* ===== Календарь ===== */
+.calendar {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 60;
+  width: min(420px, 92vw);
+  background: var(--c-white);
+  border: 2px solid #000;
+  border-radius: 15px;
+  box-shadow: 0 14px 34px rgba(0,0,0,.22);
+  padding: 14px;
+  font-family: "Montserrat", sans-serif;
+}
+.calendar[hidden] { display: none; }
+.calendar--right { left: auto; right: 0; }
+.calendar__head { display: flex; gap: 10px; margin-bottom: 12px; }
+.calendar__select {
+  appearance: none;
+  background: var(--c-home);
+  border: none;
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: clamp(14px, 1.3vw, 18px);
+  color: #000;
+  cursor: pointer;
+}
+.calendar__select--year { flex: 0 0 auto; }
+.calendar__select--month { flex: 1 1 auto; }
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.calendar__wd {
+  text-align: center;
+  font-weight: 600;
+  font-size: clamp(13px, 1.2vw, 17px);
+  padding: 4px 0;
+  color: #444;
+}
+.calendar__day {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: clamp(14px, 1.3vw, 18px);
+  color: #000;
+  cursor: pointer;
+}
+.calendar__day:hover { background: #e9f0ff; }
+.calendar__day.is-selected { background: var(--c-home); }
+.calendar__day.is-empty { visibility: hidden; cursor: default; }

@@ -54,3 +54,30 @@
   .header__bar { gap: 8px; padding: 0 12px; }
   .header__actions { gap: 6px; }
 }
+
+/* ===== DIV 2 — адаптив формы ===== */
+@media (max-width: 900px) {
+  /* Вкладки переносятся и прокручиваются по горизонтали */
+  .booking__tabs { overflow-x: auto; }
+  .tab { flex: 1 0 auto; min-width: 33%; }
+
+  /* Поля становятся в столбец */
+  .booking__form { flex-direction: column; min-height: 0; }
+  .field, .swap { border-right: none; border-bottom: 1px solid #000; }
+  .field:last-child { border-bottom: none; }
+  .field__btn { min-height: 60px; }
+
+  /* Кнопка swap во всю ширину, стрелки вертикально */
+  .swap { width: 100%; min-height: 48px; }
+  .swap svg { transform: rotate(90deg); width: 40px; }
+
+  /* Календарь раскрывается слева во всю ширину поля */
+  .calendar, .calendar--right { left: 0; right: auto; }
+}
+
+@media (max-width: 560px) {
+  .tab { min-width: 50%; font-size: 14px; }
+  .booking__toggles { flex-wrap: wrap; }
+  .field__code { margin-left: auto; }
+  .calendar { width: min(360px, 94vw); }
+}

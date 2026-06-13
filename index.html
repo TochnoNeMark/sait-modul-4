@@ -68,8 +68,72 @@
       </ul>
     </section>
 
-    <!-- DIV 2 — БИЛЕТЫ (плейсхолдер) -->
-    <section id="div2" class="section section--placeholder"><p class="placeholder__label">Билеты</p></section>
+    <!-- DIV 2 — БИЛЕТЫ -->
+    <section id="div2" class="section section--booking">
+      <h2 class="booking__title">Билеты</h2>
+
+      <!-- Вкладки: переключение формы (Покупка активна; остальные — на будущее) -->
+      <div class="booking__tabs" role="tablist" aria-label="Тип операции">
+        <button type="button" class="tab is-active" aria-selected="true">Покупка</button>
+        <button type="button" class="tab" aria-selected="false">Регистрация</button>
+        <button type="button" class="tab" aria-selected="false">Бронирование</button>
+        <button type="button" class="tab" aria-selected="false">Статус рейса</button>
+        <button type="button" class="tab" aria-selected="false">Услуги</button>
+      </div>
+
+      <div class="booking__panel">
+        <!-- Тип: Билет / Трансфер / Отель (Билет активен; остальные — на будущее) -->
+        <div class="booking__toggles">
+          <button type="button" class="toggle is-active">Билет</button>
+          <button type="button" class="toggle">Трансфер</button>
+          <button type="button" class="toggle">Отель</button>
+        </div>
+
+        <!-- Строка полей: Откуда ⇄ Куда | Туда | Обратно -->
+        <form class="booking__form" id="booking-form" autocomplete="off">
+          <!-- Откуда -->
+          <div class="field field--place" data-place="origin">
+            <button type="button" class="field__btn" aria-haspopup="listbox" aria-expanded="false">
+              <span class="field__value"></span>
+              <span class="field__code"></span>
+            </button>
+          </div>
+
+          <!-- Поменять местами -->
+          <button type="button" class="swap" id="swap-btn" aria-label="Поменять «Откуда» и «Куда» местами">
+            <svg viewBox="0 0 58 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M2 4 H54 M48 -1 L55 4 L48 9" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M56 16 H4 M10 11 L3 16 L10 21" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </button>
+
+          <!-- Куда (получает город из div 1) -->
+          <div class="field field--place" data-place="dest">
+            <button type="button" class="field__btn" aria-haspopup="listbox" aria-expanded="false">
+              <span class="field__value"></span>
+              <span class="field__code"></span>
+            </button>
+            <input type="hidden" id="dest-input" data-field="destination">
+          </div>
+
+          <!-- Туда (дата) -->
+          <div class="field field--date" data-date="depart">
+            <button type="button" class="field__btn" aria-haspopup="dialog" aria-expanded="false">
+              <span class="field__value field__value--placeholder">Туда (дата)</span>
+            </button>
+          </div>
+
+          <!-- Обратно (дата) -->
+          <div class="field field--date" data-date="return">
+            <button type="button" class="field__btn" aria-haspopup="dialog" aria-expanded="false">
+              <span class="field__value field__value--placeholder">Обратно (дата)</span>
+            </button>
+          </div>
+        </form>
+
+        <button type="button" class="booking__submit" id="booking-reset">Найти</button>
+      </div>
+    </section>
 
     <!-- DIV 3 — СОБЫТИЯ (плейсхолдер) -->
     <section id="div3" class="section section--placeholder"><p class="placeholder__label">События</p></section>
@@ -85,5 +149,6 @@
   <div class="nav-overlay" id="nav-overlay"></div>
 
   <script src="scripts/main.js"></script>
+  <script src="scripts/booking.js"></script>
 </body>
 </html>
