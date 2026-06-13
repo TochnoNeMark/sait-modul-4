@@ -95,3 +95,11 @@
   .enroll__submit { width: 100%; }
   .enroll__note { max-width: none; text-align: center; }
 }
+
+/* ===== DIV 4 — адаптив ===== */
+@media (max-width: 700px) {
+  .review-form { flex-wrap: wrap; }
+  .review-form__submit { align-self: stretch; width: 100%; }
+  .review-card { flex-direction: row; }
+  .review__avatar { width: 60px; height: 60px; }
+}

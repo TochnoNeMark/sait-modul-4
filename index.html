@@ -153,8 +153,26 @@
       </div>
     </section>
 
-    <!-- DIV 4 — ОТЗЫВЫ (плейсхолдер) -->
-    <section id="div4" class="section section--placeholder"><p class="placeholder__label">Отзывы</p></section>
+    <!-- DIV 4 — ОТЗЫВЫ -->
+    <section id="div4" class="section section--reviews">
+      <h2 class="reviews__title">Отзывы</h2>
+
+      <!-- Форма нового отзыва -->
+      <form class="review-form" id="review-form" autocomplete="off">
+        <span class="review__avatar"><img src="assets/images/div4/avatar.webp" alt=""></span>
+        <div class="review-form__body">
+          <div class="review-form__top">
+            <input type="text" class="review-form__name" name="name" placeholder="Введите имя" maxlength="40" required>
+            <div class="rating rating--input" id="rating-input" role="radiogroup" aria-label="Оценка"></div>
+          </div>
+          <input type="text" class="review-form__text" name="text" placeholder="Оставьте отзыв" maxlength="300" required>
+        </div>
+        <button type="submit" class="review-form__submit">Отправить</button>
+      </form>
+
+      <!-- Лента отзывов (прокрутка только внутри рамки) -->
+      <div class="reviews__pool" id="reviews-pool" tabindex="0" aria-label="Лента отзывов"></div>
+    </section>
 
     <!-- DIV 5 — МЕРЧ (плейсхолдер) -->
     <section id="div5" class="section section--placeholder"><p class="placeholder__label">Мерч</p></section>
@@ -165,5 +183,6 @@
 
   <script src="scripts/main.js"></script>
   <script src="scripts/booking.js"></script>
+  <script src="scripts/reviews.js"></script>
 </body>
 </html>
