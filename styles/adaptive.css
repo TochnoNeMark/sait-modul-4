@@ -103,3 +103,15 @@
   .review-card { flex-direction: row; }
   .review__avatar { width: 60px; height: 60px; }
 }
+
+/* ===== DIV 5 / товар / корзина — адаптив ===== */
+@media (max-width: 1000px) {
+  .merch__grid { grid-template-columns: repeat(2, 1fr); }
+  .product__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .merch__grid { grid-template-columns: 1fr; }
+  .merch-card__foot { flex-direction: column; }
+  .cart-item { flex-wrap: wrap; }
+  .cart-item__sum { width: 100%; text-align: left; }
+}

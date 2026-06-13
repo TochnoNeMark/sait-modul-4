@@ -158,12 +158,12 @@
       <h2 class="reviews__title">Отзывы</h2>
 
       <!-- Форма нового отзыва -->
-      <form class="review-form" id="review-form" autocomplete="off">
+      <form class="review-form" id="review-form" data-reviews="site" autocomplete="off">
         <span class="review__avatar"><img src="assets/images/div4/avatar.webp" alt=""></span>
         <div class="review-form__body">
           <div class="review-form__top">
             <input type="text" class="review-form__name" name="name" placeholder="Введите имя" maxlength="40" required>
-            <div class="rating rating--input" id="rating-input" role="radiogroup" aria-label="Оценка"></div>
+            <div class="rating rating--input" data-rating-input role="radiogroup" aria-label="Оценка"></div>
           </div>
           <input type="text" class="review-form__text" name="text" placeholder="Оставьте отзыв" maxlength="300" required>
         </div>
@@ -171,18 +171,31 @@
       </form>
 
       <!-- Лента отзывов (прокрутка только внутри рамки) -->
-      <div class="reviews__pool" id="reviews-pool" tabindex="0" aria-label="Лента отзывов"></div>
+      <div class="reviews__pool" data-reviews-pool tabindex="0" aria-label="Лента отзывов"></div>
     </section>
 
-    <!-- DIV 5 — МЕРЧ (плейсхолдер) -->
-    <section id="div5" class="section section--placeholder"><p class="placeholder__label">Мерч</p></section>
+    <!-- DIV 5 — МЕРЧ -->
+    <section id="div5" class="section section--merch">
+      <div class="merch__top">
+        <h2 class="merch__title">Мерч</h2>
+        <div class="merch__cats">
+          <button type="button" class="merch-cat is-active">Чемоданы</button>
+          <button type="button" class="merch-cat">Подушки</button>
+          <button type="button" class="merch-cat">Электроника</button>
+        </div>
+      </div>
+      <!-- Карточки генерируются из каталога (scripts/merch.js) -->
+      <div class="merch__grid" id="merch-grid"></div>
+    </section>
   </main>
 
   <!-- Затемнение под мобильное меню -->
   <div class="nav-overlay" id="nav-overlay"></div>
 
+  <script src="scripts/catalog.js"></script>
   <script src="scripts/main.js"></script>
   <script src="scripts/booking.js"></script>
   <script src="scripts/reviews.js"></script>
+  <script src="scripts/merch.js"></script>
 </body>
 </html>
