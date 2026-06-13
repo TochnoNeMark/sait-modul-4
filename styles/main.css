@@ -760,7 +760,6 @@ a { text-decoration: none; color: inherit; }
   padding: clamp(14px, 1.8vw, 28px);
   height: clamp(420px, 50vw, 605px);
   overflow-y: auto;
-  overscroll-behavior: contain; /* скролл не уходит на страницу */
   display: flex;
   flex-direction: column;
   gap: clamp(12px, 1.5vw, 24px);

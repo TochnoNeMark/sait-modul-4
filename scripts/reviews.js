@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ---- Автогенерация каждые 30 секунд ---- */
   const generateRandom = () =>
-    addReview({ name: rand(NAMES), text: rand(TEXTS), rating: randInt(3, 5) }, false);
+    addReview({ name: rand(NAMES), text: rand(TEXTS), rating: randInt(3, 5) }, true);
 
   setInterval(generateRandom, 30000);
 
