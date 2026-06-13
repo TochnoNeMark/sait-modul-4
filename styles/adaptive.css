@@ -1,15 +1,56 @@
-@media(max-width: 900px){
-  .bento{
-    grid-template-areas:
-  "plane plane plane plane plane tile"
-  "fat fat fat meme meme meme"
-  "fat fat fat meme meme meme"
-  "smalll smalll big big big big"
-  "long long long fin fin fin";
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  max-width: 658px;
+/* ===== ПЛАНШЕТ ===== */
+@media (max-width: 900px) {
+  .cities { grid-template-columns: repeat(2, 1fr); }
+
+  /* Сворачиваем навигацию и часть действий в бургер-меню */
+  .header__burger { display: flex; }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: min(78vw, 320px);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 12px;
+    margin: 0;
+    padding: calc(var(--header-h) + 32px) 24px 24px;
+    background: var(--c-header);
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    z-index: 95;
+    overflow-y: auto;
   }
-  .frame-3 img{transform: rotate(180deg);}
-  .frame-8{flex-direction: row;}
+  .nav.is-open { transform: translateX(0); }
+  .nav__btn { width: 100%; height: 52px; font-size: 16px; }
+
+  /* В мобильном меню бургер превращается в крестик */
+  .header__burger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .header__burger.is-open span:nth-child(2) { opacity: 0; }
+  .header__burger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  .header__actions { margin-left: auto; }
+  .header__cart { min-width: 0; padding: 0 16px; }
+}
+
+/* ===== МОБИЛЬНЫЙ ===== */
+@media (max-width: 560px) {
+  .header__cart span { display: none; }
+  /* Прячем текст «Корзина» на узких экранах не нужно — оставляем компактным */
+  .header__cart { font-size: 13px; padding: 0 12px; }
+
+  .hero__pill--title { font-size: clamp(11px, 3.2vw, 16px); }
+  .hero__pill--price { font-size: clamp(18px, 6vw, 28px); }
+
+  .cities {
+    gap: 24px 16px;
+  }
+}
+
+/* ===== ОЧЕНЬ УЗКИЙ ===== */
+@media (max-width: 380px) {
+  .header__bar { gap: 8px; padding: 0 12px; }
+  .header__actions { gap: 6px; }
 }

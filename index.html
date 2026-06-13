@@ -1,29 +1,89 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>tipoDZ</title>
-  <link rel="stylesheet" href="styles/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenWing — авиабилеты от 100 ₽</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <div class="bento">
-    <div class="frame frame-1 "></div>
-    <div class="frame frame-2"></div>
-    <div class="frame frame-3">
-      <img src="Asets/Airbrush-IMAGE-ENHANCER-1771179814154-1771179814154 3.png">
+  <!-- ШАПКА -->
+  <header class="header">
+    <div class="header__bar">
+      <!-- Плейсхолдер логотипа -->
+      <a href="index.html" class="header__logo" aria-label="OpenWing — на главную"></a>
+
+      <!-- Навигация по разделам -->
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#div1" class="nav__btn is-active" data-target="div1">Главная</a>
+        <a href="#div2" class="nav__btn" data-target="div2">Билеты</a>
+        <a href="#div3" class="nav__btn" data-target="div3">События</a>
+        <a href="#div4" class="nav__btn" data-target="div4">Отзывы</a>
+        <a href="#div5" class="nav__btn" data-target="div5">Мерч</a>
+      </nav>
+
+      <!-- Правый блок: корзина, поиск, домой -->
+      <div class="header__actions">
+        <a href="cart.html" class="header__cart" id="cart-link">Корзина</a>
+
+        <button type="button" class="header__icon" id="search-btn" aria-label="Поиск по сайту">
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5045 8.95711C23.1365 1.52478 36.1593 2.49736 43.5916 11.1294C50.1883 18.791 50.1635 29.9112 44.039 37.5117L58.208 53.9678C58.8834 54.7527 58.7953 55.9365 58.0104 56.6123L55.1686 59.0588C54.3838 59.7345 53.1999 59.646 52.5245 58.8615L38.3555 42.4054C29.9294 47.3329 18.9289 45.7058 12.3321 38.0442C4.89984 29.4122 5.87244 16.3894 14.5045 8.95711ZM16.9513 11.7989C9.88869 17.8799 9.09294 28.5348 15.1739 35.5974C21.2549 42.66 31.9099 43.4558 38.9724 37.3748C46.0351 31.2938 46.8309 20.6388 40.7499 13.5762C34.6689 6.51365 24.0139 5.71789 16.9513 11.7989Z" fill="currentColor"/>
+          </svg>
+        </button>
+
+        <a href="index.html" class="header__home" id="home-btn" aria-label="На главную, в начало">
+          <svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M42.7193 22.6003H39.8417V44.9999H5.28822V22.6003H2.0088L22.3641 -9.96248e-05L42.7193 22.6003Z" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Бургер для мобильной навигации -->
+      <button type="button" class="header__burger" id="burger" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="frame frame-4"></div>
-    <div class="frame frame-5"></div>
-    <div class="frame frame-6">
-      <img src="Asets/post-card.png">
-    </div>
-    <div class="frame frame-7">
-      <img src="Asets/pass.png">
-    </div>
-    <div class="frame frame-8">
-      <div><img src="Asets/blak-palka.png"></div>
-      <div><img src="Asets/blak-g.png"></div>
-    </div>
-  </div>
+  </header>
+
+  <main>
+    <!-- DIV 1 — ГЛАВНАЯ -->
+    <section id="div1" class="section section--hero">
+      <!-- Баннер -> страница тарифов -->
+      <a href="pricing.html" class="hero__banner" aria-label="Тарифы OpenWing+">
+        <span class="hero__pill hero__pill--title">Свои плюсы<br>в OpenWing+</span>
+        <span class="hero__pill hero__pill--price">от 100 ₽</span>
+      </a>
+
+      <!-- Города -> прокрутка к форме билетов + автоподстановка «Куда» -->
+      <ul class="cities">
+        <li class="cities__item"><a href="#div2" class="city" data-city="Уфа"><span class="city__photo"><img src="assets/images/div1/city-ufa.webp" alt="Уфа" loading="lazy"></span><span class="city__name">Уфа</span></a></li>
+        <li class="cities__item"><a href="#div2" class="city" data-city="Краснодар"><span class="city__photo"><img src="assets/images/div1/city-krasnodar.webp" alt="Краснодар" loading="lazy"></span><span class="city__name">Краснодар</span></a></li>
+        <li class="cities__item"><a href="#div2" class="city" data-city="Москва"><span class="city__photo"><img src="assets/images/div1/city-moscow.webp" alt="Москва" loading="lazy"></span><span class="city__name">Москва</span></a></li>
+        <li class="cities__item"><a href="#div2" class="city" data-city="Питер"><span class="city__photo"><img src="assets/images/div1/city-piter.webp" alt="Санкт-Петербург" loading="lazy"></span><span class="city__name">Питер</span></a></li>
+        <li class="cities__item"><a href="#div2" class="city" data-city="Казань"><span class="city__photo"><img src="assets/images/div1/city-kazan.webp" alt="Казань" loading="lazy"></span><span class="city__name">Казань</span></a></li>
+        <li class="cities__item"><a href="#div2" class="city" data-city="Волгоград"><span class="city__photo"><img src="assets/images/div1/city-volgograd.webp" alt="Волгоград" loading="lazy"></span><span class="city__name">Волгоград</span></a></li>
+        <li class="cities__item"><a href="#div2" class="city" data-city="Волгда"><span class="city__photo"><img src="assets/images/div1/city-volgda.webp" alt="Волгда" loading="lazy"></span><span class="city__name">Волгда</span></a></li>
+        <li class="cities__item"><a href="#div2" class="city" data-city="Тау Кита"><span class="city__photo"><img src="assets/images/div1/city-tau-kita.webp" alt="Тау Кита" loading="lazy"></span><span class="city__name">Тау Кита</span></a></li>
+      </ul>
+    </section>
+
+    <!-- DIV 2 — БИЛЕТЫ (плейсхолдер) -->
+    <section id="div2" class="section section--placeholder"><p class="placeholder__label">Билеты</p></section>
+
+    <!-- DIV 3 — СОБЫТИЯ (плейсхолдер) -->
+    <section id="div3" class="section section--placeholder"><p class="placeholder__label">События</p></section>
+
+    <!-- DIV 4 — ОТЗЫВЫ (плейсхолдер) -->
+    <section id="div4" class="section section--placeholder"><p class="placeholder__label">Отзывы</p></section>
+
+    <!-- DIV 5 — МЕРЧ (плейсхолдер) -->
+    <section id="div5" class="section section--placeholder"><p class="placeholder__label">Мерч</p></section>
+  </main>
+
+  <!-- Затемнение под мобильное меню -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <script src="scripts/main.js"></script>
 </body>
 </html>

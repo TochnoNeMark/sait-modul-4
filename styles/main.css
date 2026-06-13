@@ -1,89 +1,275 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ===== Дизайн-токены ===== */
+:root {
+  --c-header: #4d8aff;
+  --c-pill: #a6c4ff;
+  --c-home: #a5c3ff;
+  --c-accent: #4d89ff;
+  --c-logo: #d9d9d9;
+  --c-text: #000;
+  --c-white: #fff;
+  --font: "Montserrat Alternates", sans-serif;
+  --maxw: 1420px;
+  --pad: clamp(12px, 2.5vw, 24px);
+  --header-h: clamp(72px, 7vw, 100px);
 }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 40px); }
 
 body {
+  font-family: var(--font);
+  color: var(--c-text);
+  background: var(--c-white);
   min-height: 100vh;
-  background: #000;
-  padding: 32px;
-  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-.bento {
-  display: grid;
-  grid-template-areas:
-  "plane plane plane plane plane tile long"
-  "fat fat fat meme meme meme long"
-  "fat fat fat meme meme meme fin"
-  "smalll smalll big big big big fin";
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 8px;
-  max-width: 1000px;
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== ШАПКА ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: clamp(10px, 1.4vw, 20px) var(--pad);
+  background: var(--c-white);
+}
+
+.header__bar {
+  max-width: var(--maxw);
   margin: 0 auto;
-  height: 80vh;
+  height: var(--header-h);
+  background: var(--c-header);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.5vw, 24px);
+  padding: 0 clamp(14px, 1.8vw, 25px);
 }
 
-.frame {
+.header__logo {
+  flex: 0 0 auto;
+  width: clamp(44px, 4.2vw, 60px);
+  height: clamp(44px, 4.2vw, 60px);
+  background: var(--c-logo);
+  border-radius: 6px;
+}
+
+/* Навигация */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 12px);
+  margin-left: clamp(8px, 2.5vw, 39px);
+}
+
+.nav__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(44px, 4.2vw, 60px);
+  padding: 0 clamp(12px, 1.4vw, 20px);
+  min-width: clamp(78px, 7.6vw, 110px);
+  background: var(--c-pill);
+  border: 5px solid transparent;
+  border-radius: 15px;
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 300;
+  color: var(--c-text);
+  white-space: nowrap;
+  transition: border-color .2s, background .2s, font-weight .2s;
+}
+.nav__btn:hover { background: #b6cfff; }
+
+/* Активный раздел: белая обводка 5px + насыщенное начертание */
+.nav__btn.is-active {
+  border-color: var(--c-white);
+  font-weight: 500;
+}
+
+/* Правый блок */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1vw, 14px);
+  margin-left: auto;
+}
+
+.header__cart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(44px, 4.2vw, 60px);
+  padding: 0 clamp(14px, 1.6vw, 22px);
+  min-width: clamp(110px, 10.7vw, 154px);
+  background: var(--c-pill);
+  border-radius: 15px;
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 300;
+  white-space: nowrap;
+  transition: background .2s;
+}
+.header__cart:hover { background: #b6cfff; }
+
+.header__icon {
+  flex: 0 0 auto;
+  width: clamp(40px, 4.2vw, 60px);
+  height: clamp(40px, 4.2vw, 60px);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--c-text);
+  display: grid;
+  place-items: center;
+}
+.header__icon svg { width: 100%; height: 100%; }
+
+.header__home {
+  flex: 0 0 auto;
+  width: clamp(40px, 4.2vw, 60px);
+  height: clamp(40px, 4.2vw, 60px);
+  background: var(--c-home);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: background .2s;
+}
+.header__home:hover { background: #b6cfff; }
+.header__home svg { width: 62%; height: 62%; }
+
+/* Бургер — только на мобильных */
+.header__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+.header__burger span {
+  display: block;
+  height: 3px;
+  width: 26px;
+  background: var(--c-white);
+  border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s;
+  z-index: 90;
+}
+.nav-overlay.is-open { opacity: 1; visibility: visible; }
+
+/* ===== СЕКЦИИ ===== */
+.section {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 56px) var(--pad);
+}
+
+/* ===== DIV 1 — ГЛАВНАЯ ===== */
+.hero__banner {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1420 / 410;
+  border-radius: clamp(48px, 8vw, 116px);
+  overflow: hidden;
+  background-image: url("../assets/images/div1/banner-hero.webp");
+  background-size: cover;
+  background-position: center;
+  transition: transform .3s, box-shadow .3s;
+}
+.hero__banner:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(77,138,255,.35);
+}
+
+.hero__pill {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--c-accent);
+  color: var(--c-white);
+  font-weight: 800;
+  line-height: 1.1;
+}
+.hero__pill--title {
+  top: 11.7%;
+  left: 7.5%;
+  width: 23%;
+  min-height: 22%;
+  padding: clamp(8px, 1vw, 16px);
+  border-radius: clamp(20px, 3vw, 45px);
+  font-size: clamp(13px, 1.7vw, 24px);
+}
+.hero__pill--price {
+  bottom: 7.8%;
+  right: 6.5%;
+  padding: clamp(8px, 1vw, 14px) clamp(16px, 2vw, 32px);
+  border-radius: clamp(16px, 2.5vw, 36px);
+  font-size: clamp(22px, 3.4vw, 48px);
+}
+
+/* Города */
+.cities {
+  margin-top: clamp(28px, 5vw, 68px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 4vw, 56px) clamp(16px, 3vw, 40px);
+  justify-items: center;
+}
+.city {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-position: center;
-  justify-content: space-between;
-  font-size: 10px;
-  color: #000;
-  background: #fff;
-  border-radius: 16px;
-  background-size: contain;
-  background-repeat: no-repeat;
+  gap: clamp(8px, 1.2vw, 14px);
 }
-.frame-1 {
-  grid-area: plane;
-  background-image: url("Asets/arrow.png");
-  background-repeat: repeat;
+.city__photo {
+  width: clamp(96px, 11vw, 140px);
+  height: clamp(96px, 11vw, 140px);
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  transition: transform .25s, box-shadow .25s;
 }
-.frame-2 { grid-area: tile;
-  background-image: url("Asets/blak-kvadrat.png");
-  background-size: 50%;
-  background-position: center;
+.city__photo img { width: 100%; height: 100%; object-fit: cover; }
+.city:hover .city__photo {
+  transform: scale(1.05);
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
 }
-.frame-3 {
-  grid-area: long;
-  background-color: #000;
-  border: 3px solid #fff;
-}
-.frame-3 img{
-  transform: rotate(90deg);
-   width:   100%;
-  height:  100%;
-  object-fit: contain;
-  object-position: center;
-}
-.frame-4 { grid-area: fat; background-image: url("Asets/Frame\ 2147236359.png"); background-position: left;}
-.frame-5 { grid-area: meme; background-image: url("Asets/IMG_6533\ 2.png"); background-size:cover;}
-.frame-6 { grid-area: smalll;background-color: #000;
-  border: 3px solid #fff; }
-.frame-6 img{
-  width:   75%;
-  height:  75%;
-  object-fit: contain;
-  object-position: center;
-}
-.frame-7 { grid-area: big; /*background-color: #000;
-  border: 3px solid #fff;*/}
-.frame-7 img{
-width:   75%;
-height:  75%;
-object-fit: contain;
-object-position: center;
-}
-.frame-8 { grid-area: fin; }
-.frame-8 img{
-width:   75%;
-height:  75%;
-object-fit: contain;
-object-position: center;
+.city__name {
+  font-size: clamp(13px, 1.1vw, 16px);
+  font-weight: 500;
 }
 
+/* ===== ПЛЕЙСХОЛДЕРЫ (div 2–5) ===== */
+.section--placeholder {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--c-pill);
+  border-radius: 24px;
+  margin-top: clamp(24px, 4vw, 48px);
+  background: #f5f8ff;
+}
+.placeholder__label {
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 500;
+  color: var(--c-accent);
+  opacity: .6;
+}
