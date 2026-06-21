@@ -31,58 +31,16 @@
       <h2 class="booking__title">Билеты</h2>
 
       <div class="booking__tabs" role="tablist" aria-label="Тип операции">
-        <button type="button" class="tab is-active" aria-selected="true">Покупка</button>
-        <button type="button" class="tab" aria-selected="false">Регистрация</button>
-        <button type="button" class="tab" aria-selected="false">Бронирование</button>
-        <button type="button" class="tab" aria-selected="false">Статус рейса</button>
-        <button type="button" class="tab" aria-selected="false">Услуги</button>
+        <button type="button" class="tab" data-tab="purchase" aria-selected="true">Покупка</button>
+        <button type="button" class="tab" data-tab="registration" aria-selected="false">Регистрация</button>
+        <button type="button" class="tab" data-tab="booking" aria-selected="false">Бронирование</button>
+        <button type="button" class="tab" data-tab="status" aria-selected="false">Статус рейса</button>
+        <a class="tab" href="pricing.html">Услуги</a>
       </div>
 
-      <div class="booking__panel">
-        <div class="booking__toggles">
-          <button type="button" class="toggle is-active">Билет</button>
-          <button type="button" class="toggle">Трансфер</button>
-          <button type="button" class="toggle">Отель</button>
-        </div>
-
-        <form class="booking__form" id="booking-form" autocomplete="off">
-          <div class="field field--place" data-place="origin">
-            <button type="button" class="field__btn" aria-haspopup="listbox" aria-expanded="false">
-              <span class="field__value"></span>
-              <span class="field__code"></span>
-            </button>
-          </div>
-
-          <button type="button" class="swap" id="swap-btn" aria-label="Поменять «Откуда» и «Куда» местами">
-            <svg viewBox="0 0 58 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M2 4 H54 M48 -1 L55 4 L48 9" stroke="currentColor" stroke-width="2" fill="none"/>
-              <path d="M56 16 H4 M10 11 L3 16 L10 21" stroke="currentColor" stroke-width="2" fill="none"/>
-            </svg>
-          </button>
-
-          <div class="field field--place" data-place="dest">
-            <button type="button" class="field__btn" aria-haspopup="listbox" aria-expanded="false">
-              <span class="field__value"></span>
-              <span class="field__code"></span>
-            </button>
-            <input type="hidden" id="dest-input" data-field="destination">
-          </div>
-
-          <div class="field field--date" data-date="depart">
-            <button type="button" class="field__btn" aria-haspopup="dialog" aria-expanded="false">
-              <span class="field__value field__value--placeholder">Туда (дата)</span>
-            </button>
-          </div>
-
-          <div class="field field--date" data-date="return">
-            <button type="button" class="field__btn" aria-haspopup="dialog" aria-expanded="false">
-              <span class="field__value field__value--placeholder">Обратно (дата)</span>
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <button type="button" class="booking__submit" id="booking-reset">Найти</button>
+      <!-- Содержимое формы рендерит scripts/booking.js по активной вкладке -->
+      <div class="booking__panel" id="booking-panel"></div>
+      <div class="booking__bottom" id="booking-bottom"></div>
     </section>
   </main>
 

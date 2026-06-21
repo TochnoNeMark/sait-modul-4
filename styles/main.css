@@ -410,6 +410,91 @@ a { text-decoration: none; color: inherit; }
 .booking__submit:hover { background: #b4ccff; }
 .booking__submit:active { transform: scale(.97); }
 
+/* Текстовое поле в строке формы */
+.field--text { flex: 1.4 1 0; }
+.field__input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  padding: clamp(12px, 1.4vw, 20px) clamp(14px, 1.6vw, 24px);
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: clamp(14px, 1.5vw, 24px);
+  color: #000;
+}
+.field__input::placeholder { color: #9aa3b2; }
+.field__input:focus { outline: none; }
+
+/* Счётчик гостей */
+.field--guests { flex: 1.2 1 0; padding: 0 clamp(14px, 1.6vw, 24px); gap: clamp(8px, 1vw, 14px); }
+.field--guests .field__value { display: inline-flex; align-items: baseline; gap: 4px; }
+.guests__ctrl { display: inline-flex; gap: clamp(6px, 0.8vw, 10px); margin-left: auto; }
+.guests__btn {
+  width: clamp(30px, 3vw, 40px);
+  height: clamp(30px, 3vw, 40px);
+  display: grid;
+  place-items: center;
+  background: var(--c-white);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: var(--fs-btn);
+  color: #000;
+  cursor: pointer;
+  transition: background .2s;
+}
+.guests__btn:hover { background: #e6eeff; }
+
+/* Кнопка-действие внутри строки (Регистрация / Найти рейс) */
+.field--action { flex: 1.2 1 0; padding: clamp(8px, 1vw, 12px); }
+.field--action-wide { flex: 2 1 0; }
+.field__submit {
+  width: 100%;
+  height: 100%;
+  background: var(--c-white);
+  border: none;
+  border-radius: 11px;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: var(--fs-btn);
+  color: #000;
+  cursor: pointer;
+  transition: background .2s, transform .1s;
+}
+.field__submit:hover { background: #e6eeff; }
+.field__submit:active { transform: scale(.98); }
+
+/* Поле выбора места (ряд / место) */
+.field--seat { flex: 1.4 1 0; gap: clamp(8px, 1vw, 14px); padding: 0 clamp(14px, 1.6vw, 24px); flex-wrap: wrap; }
+.seat__label { font-weight: 600; font-size: clamp(14px, 1.5vw, 24px); color: #000; }
+.seat__select {
+  appearance: none;
+  background: var(--c-white);
+  border: none;
+  border-radius: 8px;
+  padding: clamp(7px, 0.8vw, 11px) clamp(12px, 1.4vw, 18px);
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: var(--fs-btn);
+  color: #000;
+  cursor: pointer;
+}
+
+/* Примечание под строкой формы (на синей панели) */
+.booking__note {
+  margin-top: clamp(16px, 2vw, 28px);
+  color: var(--c-white);
+  font-weight: 500;
+  font-size: var(--fs-p);
+  line-height: 1.3;
+}
+
+/* Нижняя кнопка (Найти / Забронировать место) — вне синей панели */
+.booking__bottom { display: flex; justify-content: flex-end; }
+.booking__bottom .booking__submit { margin-left: 0; }
+
 /* ===== Выпадающий список аэропортов ===== */
 .dropdown {
   position: absolute;
