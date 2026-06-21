@@ -113,5 +113,8 @@
   .merch__grid { grid-template-columns: 1fr; }
   .merch-card__foot { flex-direction: column; }
   .cart-item { flex-wrap: wrap; }
-  .cart-item__sum { width: 100%; text-align: left; }
+  .cart-item__info { flex: 1 1 60%; }
+  .cart-item__qty { order: 3; }
+  .cart-item__sum { order: 4; margin-left: auto; min-width: 0; }
+  .cart-item__remove { order: 5; flex: 1 0 100%; }
 }

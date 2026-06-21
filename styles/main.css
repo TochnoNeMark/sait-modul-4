@@ -1006,16 +1006,60 @@ a { text-decoration: none; color: inherit; }
   border-radius: 14px;
   padding: clamp(12px, 1.5vw, 20px);
 }
-.cart-item__img { flex: 0 0 auto; width: clamp(56px, 7vw, 90px); border-radius: 10px; overflow: hidden; }
-.cart-item__img img { width: 100%; height: auto; display: block; }
+.cart-item__img {
+  flex: 0 0 auto;
+  width: clamp(56px, 7vw, 90px);
+  height: clamp(56px, 7vw, 90px);
+  border-radius: 10px;
+}
+.cart-item__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .cart-item__info { flex: 1 1 auto; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .cart-item__name { font-weight: 600; font-size: var(--fs-p); }
+.cart-item__color { font-size: var(--fs-p); color: #555; }
 .cart-item__unit { font-size: var(--fs-p); color: #777; }
-.cart-item__count { font-weight: 600; font-size: clamp(16px, 1.6vw, 24px); color: var(--c-accent); }
-.cart-item__sum { font-weight: 700; font-size: clamp(16px, 1.8vw, 26px); min-width: clamp(60px, 7vw, 100px); text-align: right; }
+
+/* Степпер количества */
+.cart-item__qty {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(8px, 1vw, 14px);
+}
+.cart-qty {
+  width: clamp(30px, 3vw, 40px);
+  height: clamp(30px, 3vw, 40px);
+  display: grid;
+  place-items: center;
+  background: var(--c-pill);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font);
+  font-size: var(--fs-btn);
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: background .2s;
+}
+.cart-qty:hover { background: #b6cfff; }
+.cart-item__count { font-weight: 600; font-size: var(--fs-p); color: var(--c-accent); min-width: 1.5em; text-align: center; }
+.cart-item__sum { font-weight: 700; font-size: var(--fs-p); min-width: clamp(60px, 7vw, 100px); text-align: right; }
+.cart-item__remove {
+  flex: 0 0 auto;
+  background: transparent;
+  border: 2px solid var(--c-accent);
+  border-radius: 8px;
+  padding: clamp(7px, 0.8vw, 11px) clamp(14px, 1.4vw, 22px);
+  font-family: var(--font);
+  font-size: var(--fs-btn);
+  font-weight: 500;
+  color: var(--c-accent);
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.cart-item__remove:hover { background: var(--c-accent); color: var(--c-white); }
 .cart-total {
   align-self: flex-end;
   margin-top: clamp(12px, 1.5vw, 20px);
-  font-size: clamp(20px, 2.4vw, 32px);
+  font-size: var(--fs-h);
 }
 .cart-total b { color: var(--c-accent); }
