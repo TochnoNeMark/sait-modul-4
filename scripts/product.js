@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const id = new URLSearchParams(location.search).get("id");
   const product = window.getProduct(id) || window.PRODUCTS[0];
 
+  // «Назад» возвращает в раздел «Мерч», открытый на категории этого товара
+  const backLink = document.querySelector(".product__back");
+  if (backLink) backLink.href = `merch.html?cat=${encodeURIComponent(product.category || "suitcase")}`;
+
   document.title = `${product.name} — OpenWing`;
 
   const imgEl = document.getElementById("product-img");

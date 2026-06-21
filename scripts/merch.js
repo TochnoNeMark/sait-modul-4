@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   const CATEGORIES = window.CATEGORIES || [{ key: "suitcase", label: "Чемоданы" }];
-  let active = CATEGORIES[0].key;
+  // Категория из URL (?cat=) — для возврата со страницы товара; иначе первая.
+  const fromUrl = new URLSearchParams(location.search).get("cat");
+  let active = CATEGORIES.some((c) => c.key === fromUrl) ? fromUrl : CATEGORIES[0].key;
 
   // Кнопки категорий (рендерим из каталога, если есть контейнер)
   if (catsBox) {
