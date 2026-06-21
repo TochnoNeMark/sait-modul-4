@@ -7,195 +7,46 @@
   <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <!-- ШАПКА -->
   <header class="header">
     <div class="header__bar">
-      <!-- Плейсхолдер логотипа -->
       <a href="index.html" class="header__logo" aria-label="OpenWing — на главную"></a>
-
-      <!-- Навигация по разделам -->
       <nav class="nav" aria-label="Основная навигация">
-        <a href="#div1" class="nav__btn is-active" data-target="div1">Главная</a>
-        <a href="#div2" class="nav__btn" data-target="div2">Билеты</a>
-        <a href="#div3" class="nav__btn" data-target="div3">События</a>
-        <a href="#div4" class="nav__btn" data-target="div4">Отзывы</a>
-        <a href="#div5" class="nav__btn" data-target="div5">Мерч</a>
+        <a href="index.html" class="nav__btn" data-page="index">Главная</a>
+        <a href="tickets.html" class="nav__btn" data-page="tickets">Билеты</a>
+        <a href="events.html" class="nav__btn" data-page="events">События</a>
+        <a href="reviews.html" class="nav__btn" data-page="reviews">Отзывы</a>
+        <a href="merch.html" class="nav__btn" data-page="merch">Мерч</a>
       </nav>
-
-      <!-- Правый блок: корзина, поиск, домой -->
       <div class="header__actions">
         <a href="cart.html" class="header__cart" id="cart-link">Корзина</a>
-
-        <button type="button" class="header__icon" id="search-btn" aria-label="Поиск по сайту">
-          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5045 8.95711C23.1365 1.52478 36.1593 2.49736 43.5916 11.1294C50.1883 18.791 50.1635 29.9112 44.039 37.5117L58.208 53.9678C58.8834 54.7527 58.7953 55.9365 58.0104 56.6123L55.1686 59.0588C54.3838 59.7345 53.1999 59.646 52.5245 58.8615L38.3555 42.4054C29.9294 47.3329 18.9289 45.7058 12.3321 38.0442C4.89984 29.4122 5.87244 16.3894 14.5045 8.95711ZM16.9513 11.7989C9.88869 17.8799 9.09294 28.5348 15.1739 35.5974C21.2549 42.66 31.9099 43.4558 38.9724 37.3748C46.0351 31.2938 46.8309 20.6388 40.7499 13.5762C34.6689 6.51365 24.0139 5.71789 16.9513 11.7989Z" fill="currentColor"/>
-          </svg>
-        </button>
-
-        <a href="index.html" class="header__home" id="home-btn" aria-label="На главную, в начало">
-          <svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M42.7193 22.6003H39.8417V44.9999H5.28822V22.6003H2.0088L22.3641 -9.96248e-05L42.7193 22.6003Z" fill="currentColor"/>
-          </svg>
-        </a>
+        <a href="index.html" class="header__home" id="home-btn" aria-label="На главную, в начало"><svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M42.7193 22.6003H39.8417V44.9999H5.28822V22.6003H2.0088L22.3641 -9.96248e-05L42.7193 22.6003Z" fill="currentColor"/></svg></a>
       </div>
-
-      <!-- Бургер для мобильной навигации -->
-      <button type="button" class="header__burger" id="burger" aria-label="Меню" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <button type="button" class="header__burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
   <main>
     <!-- DIV 1 — ГЛАВНАЯ -->
-    <section id="div1" class="section section--hero">
-      <!-- Баннер -> страница тарифов -->
+    <section class="section section--hero">
       <a href="pricing.html" class="hero__banner" aria-label="Тарифы OpenWing+">
         <span class="hero__pill hero__pill--title">Свои плюсы<br>в OpenWing+</span>
         <span class="hero__pill hero__pill--price">от 100 ₽</span>
       </a>
-
-      <!-- Города -> прокрутка к форме билетов + автоподстановка «Куда» -->
       <ul class="cities">
-        <li class="cities__item"><a href="#div2" class="city" data-city="Уфа"><span class="city__photo"><img src="assets/images/div1/city-ufa.webp" alt="Уфа" loading="lazy"></span><span class="city__name">Уфа</span></a></li>
-        <li class="cities__item"><a href="#div2" class="city" data-city="Краснодар"><span class="city__photo"><img src="assets/images/div1/city-krasnodar.webp" alt="Краснодар" loading="lazy"></span><span class="city__name">Краснодар</span></a></li>
-        <li class="cities__item"><a href="#div2" class="city" data-city="Москва"><span class="city__photo"><img src="assets/images/div1/city-moscow.webp" alt="Москва" loading="lazy"></span><span class="city__name">Москва</span></a></li>
-        <li class="cities__item"><a href="#div2" class="city" data-city="Питер"><span class="city__photo"><img src="assets/images/div1/city-piter.webp" alt="Санкт-Петербург" loading="lazy"></span><span class="city__name">Питер</span></a></li>
-        <li class="cities__item"><a href="#div2" class="city" data-city="Казань"><span class="city__photo"><img src="assets/images/div1/city-kazan.webp" alt="Казань" loading="lazy"></span><span class="city__name">Казань</span></a></li>
-        <li class="cities__item"><a href="#div2" class="city" data-city="Волгоград"><span class="city__photo"><img src="assets/images/div1/city-volgograd.webp" alt="Волгоград" loading="lazy"></span><span class="city__name">Волгоград</span></a></li>
-        <li class="cities__item"><a href="#div2" class="city" data-city="Волгда"><span class="city__photo"><img src="assets/images/div1/city-volgda.webp" alt="Волгда" loading="lazy"></span><span class="city__name">Волгда</span></a></li>
-        <li class="cities__item"><a href="#div2" class="city" data-city="Тау Кита"><span class="city__photo"><img src="assets/images/div1/city-tau-kita.webp" alt="Тау Кита" loading="lazy"></span><span class="city__name">Тау Кита</span></a></li>
+        <li class="cities__item"><a href="tickets.html" class="city" data-city="Уфа"><span class="city__photo"><img src="assets/images/div1/city-ufa.webp" alt="Уфа" loading="lazy"></span><span class="city__name">Уфа</span></a></li>
+        <li class="cities__item"><a href="tickets.html" class="city" data-city="Краснодар"><span class="city__photo"><img src="assets/images/div1/city-krasnodar.webp" alt="Краснодар" loading="lazy"></span><span class="city__name">Краснодар</span></a></li>
+        <li class="cities__item"><a href="tickets.html" class="city" data-city="Москва"><span class="city__photo"><img src="assets/images/div1/city-moscow.webp" alt="Москва" loading="lazy"></span><span class="city__name">Москва</span></a></li>
+        <li class="cities__item"><a href="tickets.html" class="city" data-city="Питер"><span class="city__photo"><img src="assets/images/div1/city-piter.webp" alt="Санкт-Петербург" loading="lazy"></span><span class="city__name">Питер</span></a></li>
+        <li class="cities__item"><a href="tickets.html" class="city" data-city="Казань"><span class="city__photo"><img src="assets/images/div1/city-kazan.webp" alt="Казань" loading="lazy"></span><span class="city__name">Казань</span></a></li>
+        <li class="cities__item"><a href="tickets.html" class="city" data-city="Волгоград"><span class="city__photo"><img src="assets/images/div1/city-volgograd.webp" alt="Волгоград" loading="lazy"></span><span class="city__name">Волгоград</span></a></li>
+        <li class="cities__item"><a href="tickets.html" class="city" data-city="Волгда"><span class="city__photo"><img src="assets/images/div1/city-volgda.webp" alt="Волгда" loading="lazy"></span><span class="city__name">Волгда</span></a></li>
+        <li class="cities__item"><a href="tickets.html" class="city" data-city="Тау Кита"><span class="city__photo"><img src="assets/images/div1/city-tau-kita.webp" alt="Тау Кита" loading="lazy"></span><span class="city__name">Тау Кита</span></a></li>
       </ul>
-    </section>
-
-    <!-- DIV 2 — БИЛЕТЫ -->
-    <section id="div2" class="section section--booking">
-      <h2 class="booking__title">Билеты</h2>
-
-      <!-- Вкладки: переключение формы (Покупка активна; остальные — на будущее) -->
-      <div class="booking__tabs" role="tablist" aria-label="Тип операции">
-        <button type="button" class="tab is-active" aria-selected="true">Покупка</button>
-        <button type="button" class="tab" aria-selected="false">Регистрация</button>
-        <button type="button" class="tab" aria-selected="false">Бронирование</button>
-        <button type="button" class="tab" aria-selected="false">Статус рейса</button>
-        <button type="button" class="tab" aria-selected="false">Услуги</button>
-      </div>
-
-      <div class="booking__panel">
-        <!-- Тип: Билет / Трансфер / Отель (Билет активен; остальные — на будущее) -->
-        <div class="booking__toggles">
-          <button type="button" class="toggle is-active">Билет</button>
-          <button type="button" class="toggle">Трансфер</button>
-          <button type="button" class="toggle">Отель</button>
-        </div>
-
-        <!-- Строка полей: Откуда ⇄ Куда | Туда | Обратно -->
-        <form class="booking__form" id="booking-form" autocomplete="off">
-          <!-- Откуда -->
-          <div class="field field--place" data-place="origin">
-            <button type="button" class="field__btn" aria-haspopup="listbox" aria-expanded="false">
-              <span class="field__value"></span>
-              <span class="field__code"></span>
-            </button>
-          </div>
-
-          <!-- Поменять местами -->
-          <button type="button" class="swap" id="swap-btn" aria-label="Поменять «Откуда» и «Куда» местами">
-            <svg viewBox="0 0 58 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M2 4 H54 M48 -1 L55 4 L48 9" stroke="currentColor" stroke-width="2" fill="none"/>
-              <path d="M56 16 H4 M10 11 L3 16 L10 21" stroke="currentColor" stroke-width="2" fill="none"/>
-            </svg>
-          </button>
-
-          <!-- Куда (получает город из div 1) -->
-          <div class="field field--place" data-place="dest">
-            <button type="button" class="field__btn" aria-haspopup="listbox" aria-expanded="false">
-              <span class="field__value"></span>
-              <span class="field__code"></span>
-            </button>
-            <input type="hidden" id="dest-input" data-field="destination">
-          </div>
-
-          <!-- Туда (дата) -->
-          <div class="field field--date" data-date="depart">
-            <button type="button" class="field__btn" aria-haspopup="dialog" aria-expanded="false">
-              <span class="field__value field__value--placeholder">Туда (дата)</span>
-            </button>
-          </div>
-
-          <!-- Обратно (дата) -->
-          <div class="field field--date" data-date="return">
-            <button type="button" class="field__btn" aria-haspopup="dialog" aria-expanded="false">
-              <span class="field__value field__value--placeholder">Обратно (дата)</span>
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <button type="button" class="booking__submit" id="booking-reset">Найти</button>
-    </section>
-
-    <!-- DIV 3 — СОБЫТИЯ -->
-    <section id="div3" class="section section--events">
-      <h2 class="events__title">События</h2>
-      <div class="events__body">
-        <!-- Плакат -> страница записи на курс -->
-        <a href="enroll.html" class="events__poster" aria-label="Запись на курсы для пилотов">
-          <img src="assets/images/div3/poster.webp" alt="Станьте пилотом нашей авиакомпании">
-        </a>
-        <div class="events__col">
-          <div class="events__card">
-            <h3 class="events__heading">Станьте пилотом нашей авиакомпании</h3>
-            <p class="events__text">Запишитесь на курс и станьте нашим статным сотрудником! 4-х недельный интенсив даст вам исчерпывающие знания о внутреннем распорядке, используемых самолетах и маршрутах</p>
-          </div>
-          <a href="enroll.html" class="events__enroll">Записаться</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- DIV 4 — ОТЗЫВЫ -->
-    <section id="div4" class="section section--reviews">
-      <h2 class="reviews__title">Отзывы</h2>
-
-      <!-- Форма нового отзыва -->
-      <form class="review-form" id="review-form" data-reviews="site" autocomplete="off">
-        <span class="review__avatar"><img src="assets/images/div4/avatar.webp" alt=""></span>
-        <div class="review-form__body">
-          <div class="review-form__top">
-            <input type="text" class="review-form__name" name="name" placeholder="Введите имя" maxlength="40" required>
-            <div class="rating rating--input" data-rating-input role="radiogroup" aria-label="Оценка"></div>
-          </div>
-          <input type="text" class="review-form__text" name="text" placeholder="Оставьте отзыв" maxlength="300" required>
-        </div>
-        <button type="submit" class="review-form__submit">Отправить</button>
-      </form>
-
-      <!-- Лента отзывов (прокрутка только внутри рамки) -->
-      <div class="reviews__pool" data-reviews-pool tabindex="0" aria-label="Лента отзывов"></div>
-    </section>
-
-    <!-- DIV 5 — МЕРЧ -->
-    <section id="div5" class="section section--merch">
-      <div class="merch__top">
-        <h2 class="merch__title">Мерч</h2>
-        <div class="merch__cats">
-          <button type="button" class="merch-cat is-active">Чемоданы</button>
-          <button type="button" class="merch-cat">Подушки</button>
-          <button type="button" class="merch-cat">Электроника</button>
-        </div>
-      </div>
-      <!-- Карточки генерируются из каталога (scripts/merch.js) -->
-      <div class="merch__grid" id="merch-grid"></div>
     </section>
   </main>
 
-  <!-- Затемнение под мобильное меню -->
   <div class="nav-overlay" id="nav-overlay"></div>
-
   <script src="scripts/catalog.js"></script>
   <script src="scripts/main.js"></script>
-  <script src="scripts/booking.js"></script>
-  <script src="scripts/reviews.js"></script>
-  <script src="scripts/merch.js"></script>
 </body>
 </html>

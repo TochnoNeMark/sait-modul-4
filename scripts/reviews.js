@@ -1,13 +1,13 @@
 "use strict";
 
 /**
- * Переиспользуемый движок отзывов (div 4 на главной и div 5.2 на странице
- * товара работают одинаково). Отзывы хранятся только в DOM и стираются при
- * перезагрузке — намеренно, без localStorage.
- *  - форма: имя + оценка звёздами + текст -> добавляет карточку наверх ленты;
- *  - каждые 30 секунд генерируется случайный отзыв (имя/текст/оценка);
- *  - прокрутка ленты передаётся странице только на верхней/нижней границе.
- * Набор текстов выбирается по data-reviews="site" | "merch" на форме.
+ * Переиспользуемый движок отзывов (div 1.4 и div 1.5.2 работают одинаково).
+ * Отзывы хранятся только в DOM и стираются при перезагрузке — без localStorage.
+ *  - форма: имя + оценка звёздами + текст -> добавляет отзыв наверх ленты;
+ *  - каждые 30 секунд генерируется случайный отзыв;
+ *  - бесконечная лента: при прокрутке к низу страницы подгружаются новые
+ *    отзывы (data-infinite="true" на форме);
+ *  - набор текстов выбирается по data-reviews="site" | "merch".
  */
 (function () {
   const NAMES = [
@@ -71,6 +71,7 @@
 
     const kind = form.dataset.reviews === "merch" ? "merch" : "site";
     const avatar = form.dataset.avatar || "assets/images/div4/avatar.webp";
+    const infinite = form.dataset.infinite === "true";
     const texts = TEXTS[kind];
 
     /* Интерактивный рейтинг */
@@ -98,8 +99,8 @@
     }
     ratingInput.addEventListener("mouseleave", () => paintStars(currentRating));
 
-    /* Карточка отзыва */
-    const addReview = ({ name, text, rating }) => {
+    /* Карточка отзыва (position: 'top' | 'bottom') */
+    const makeCard = ({ name, text, rating }) => {
       const card = document.createElement("article");
       card.className = "review-card";
       card.innerHTML = `
@@ -111,28 +112,46 @@
           </div>
           <p class="review-card__text">${escapeHTML(text)}</p>
         </div>`;
-      pool.prepend(card);
+      return card;
     };
+    const addReview = (data, position = "top") => {
+      const card = makeCard(data);
+      if (position === "top") pool.prepend(card); else pool.append(card);
+    };
+    const randomReview = () => ({ name: rand(NAMES), text: rand(texts), rating: randInt(3, 5) });
 
-    /* Отправка формы */
+    /* Отправка формы — новый отзыв сверху */
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const name = form.elements.name.value.trim();
       const text = form.elements.text.value.trim();
       if (!name || !text) return;
-      addReview({ name, text, rating: currentRating || 5 });
+      addReview({ name, text, rating: currentRating || 5 }, "top");
       form.reset();
       setRating(0);
-      pool.scrollTop = 0;
+      window.scrollTo({ top: section.offsetTop - 80, behavior: "smooth" });
     });
 
-    /* Автогенерация */
-    const generateRandom = () =>
-      addReview({ name: rand(NAMES), text: rand(texts), rating: randInt(3, 5) });
-    setInterval(generateRandom, 30000);
+    /* Автогенерация раз в 30 секунд — сверху */
+    setInterval(() => addReview(randomReview(), "top"), 30000);
 
     /* Стартовые отзывы */
-    for (let i = 0; i < 3; i++) generateRandom();
+    for (let i = 0; i < 6; i++) addReview(randomReview(), "bottom");
+
+    /* Бесконечная лента — подгрузка снизу при приближении к концу страницы */
+    if (infinite) {
+      let loading = false;
+      const onScroll = () => {
+        if (loading) return;
+        const nearBottom =
+          window.innerHeight + window.scrollY >= document.body.offsetHeight - 700;
+        if (!nearBottom) return;
+        loading = true;
+        for (let i = 0; i < 5; i++) addReview(randomReview(), "bottom");
+        requestAnimationFrame(() => { loading = false; });
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
   }
 
   window.initReviews = initReviews;

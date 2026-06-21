@@ -11,20 +11,15 @@
     <div class="header__bar">
       <a href="index.html" class="header__logo" aria-label="OpenWing — на главную"></a>
       <nav class="nav" aria-label="Основная навигация">
-        <a href="index.html#div1" class="nav__btn">Главная</a>
-        <a href="index.html#div2" class="nav__btn">Билеты</a>
-        <a href="index.html#div3" class="nav__btn">События</a>
-        <a href="index.html#div4" class="nav__btn">Отзывы</a>
-        <a href="index.html#div5" class="nav__btn">Мерч</a>
+        <a href="index.html" class="nav__btn" data-page="index">Главная</a>
+        <a href="tickets.html" class="nav__btn" data-page="tickets">Билеты</a>
+        <a href="events.html" class="nav__btn" data-page="events">События</a>
+        <a href="reviews.html" class="nav__btn" data-page="reviews">Отзывы</a>
+        <a href="merch.html" class="nav__btn" data-page="merch">Мерч</a>
       </nav>
       <div class="header__actions">
         <a href="cart.html" class="header__cart" id="cart-link">Корзина</a>
-        <button type="button" class="header__icon" id="search-btn" aria-label="Поиск по сайту">
-          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.5045 8.95711C23.1365 1.52478 36.1593 2.49736 43.5916 11.1294C50.1883 18.791 50.1635 29.9112 44.039 37.5117L58.208 53.9678C58.8834 54.7527 58.7953 55.9365 58.0104 56.6123L55.1686 59.0588C54.3838 59.7345 53.1999 59.646 52.5245 58.8615L38.3555 42.4054C29.9294 47.3329 18.9289 45.7058 12.3321 38.0442C4.89984 29.4122 5.87244 16.3894 14.5045 8.95711ZM16.9513 11.7989C9.88869 17.8799 9.09294 28.5348 15.1739 35.5974C21.2549 42.66 31.9099 43.4558 38.9724 37.3748C46.0351 31.2938 46.8309 20.6388 40.7499 13.5762C34.6689 6.51365 24.0139 5.71789 16.9513 11.7989Z" fill="currentColor"/></svg>
-        </button>
-        <a href="index.html" class="header__home" id="home-btn" aria-label="На главную, в начало">
-          <svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M42.7193 22.6003H39.8417V44.9999H5.28822V22.6003H2.0088L22.3641 -9.96248e-05L42.7193 22.6003Z" fill="currentColor"/></svg>
-        </a>
+        <a href="index.html" class="header__home" id="home-btn" aria-label="На главную, в начало"><svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M42.7193 22.6003H39.8417V44.9999H5.28822V22.6003H2.0088L22.3641 -9.96248e-05L42.7193 22.6003Z" fill="currentColor"/></svg></a>
       </div>
       <button type="button" class="header__burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -68,7 +63,7 @@
     <!-- DIV 5.2 — отзывы на товар -->
     <section class="section section--reviews reviews-block">
       <h2 class="reviews__title">Отзывы</h2>
-      <form class="review-form" data-reviews="merch" autocomplete="off">
+      <form class="review-form" data-reviews="merch" data-infinite="true" autocomplete="off">
         <span class="review__avatar"><img src="assets/images/div4/avatar.webp" alt=""></span>
         <div class="review-form__body">
           <div class="review-form__top">

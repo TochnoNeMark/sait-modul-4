@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Запись на курсы для пилотов — OpenWing</title>
+  <title>Отзывы — OpenWing</title>
   <link rel="stylesheet" href="styles/style.css">
 </head>
-<body class="page-enroll">
+<body>
   <header class="header">
     <div class="header__bar">
       <a href="index.html" class="header__logo" aria-label="OpenWing — на главную"></a>
@@ -25,25 +25,30 @@
     </div>
   </header>
 
-  <main class="enroll">
-    <form class="enroll__form" id="enroll-form" autocomplete="off">
-      <h1 class="enroll__title">Запись на курсы для пилотов</h1>
-      <p class="enroll__desc">Запись на курс для будующих сотрудников авиакомпании. Подать заявку могут только физические лица, имеющие действующую летную лицензию</p>
+  <main>
+    <!-- DIV 1.4 — ОТЗЫВЫ -->
+    <section class="section section--reviews reviews-block">
+      <h2 class="reviews__title">Отзывы</h2>
 
-      <input type="text" class="enroll__input" name="fio" placeholder="Ф.И.О">
-      <input type="text" class="enroll__input" name="license" placeholder="Номер лицензии">
-      <textarea class="enroll__input enroll__input--area" name="experience" placeholder="Расскажите об опыте работы"></textarea>
+      <form class="review-form" data-reviews="site" data-infinite="true" autocomplete="off">
+        <span class="review__avatar"><img src="assets/images/div4/avatar.webp" alt=""></span>
+        <div class="review-form__body">
+          <div class="review-form__top">
+            <input type="text" class="review-form__name" name="name" placeholder="Введите имя" maxlength="40" required>
+            <div class="rating rating--input" data-rating-input role="radiogroup" aria-label="Оценка"></div>
+          </div>
+          <input type="text" class="review-form__text" name="text" placeholder="Оставьте отзыв" maxlength="300" required>
+        </div>
+        <button type="submit" class="review-form__submit">Отправить</button>
+      </form>
 
-      <div class="enroll__footer">
-        <button type="submit" class="enroll__submit">отправить</button>
-        <p class="enroll__note">*отправляя форму вы даете согласие на обработку персональных данных</p>
-      </div>
-    </form>
+      <div class="reviews__pool" data-reviews-pool aria-label="Лента отзывов"></div>
+    </section>
   </main>
 
   <div class="nav-overlay" id="nav-overlay"></div>
   <script src="scripts/catalog.js"></script>
   <script src="scripts/main.js"></script>
-  <script src="scripts/enroll.js"></script>
+  <script src="scripts/reviews.js"></script>
 </body>
 </html>

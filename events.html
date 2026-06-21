@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Запись на курсы для пилотов — OpenWing</title>
+  <title>События — OpenWing</title>
   <link rel="stylesheet" href="styles/style.css">
 </head>
-<body class="page-enroll">
+<body>
   <header class="header">
     <div class="header__bar">
       <a href="index.html" class="header__logo" aria-label="OpenWing — на главную"></a>
@@ -25,25 +25,27 @@
     </div>
   </header>
 
-  <main class="enroll">
-    <form class="enroll__form" id="enroll-form" autocomplete="off">
-      <h1 class="enroll__title">Запись на курсы для пилотов</h1>
-      <p class="enroll__desc">Запись на курс для будующих сотрудников авиакомпании. Подать заявку могут только физические лица, имеющие действующую летную лицензию</p>
-
-      <input type="text" class="enroll__input" name="fio" placeholder="Ф.И.О">
-      <input type="text" class="enroll__input" name="license" placeholder="Номер лицензии">
-      <textarea class="enroll__input enroll__input--area" name="experience" placeholder="Расскажите об опыте работы"></textarea>
-
-      <div class="enroll__footer">
-        <button type="submit" class="enroll__submit">отправить</button>
-        <p class="enroll__note">*отправляя форму вы даете согласие на обработку персональных данных</p>
+  <main>
+    <!-- DIV 1.3 — СОБЫТИЯ -->
+    <section class="section section--events">
+      <h2 class="events__title">События</h2>
+      <div class="events__body">
+        <a href="enroll.html" class="events__poster" aria-label="Запись на курсы для пилотов">
+          <img src="assets/images/div3/poster.webp" alt="Станьте пилотом нашей авиакомпании">
+        </a>
+        <div class="events__col">
+          <div class="events__card">
+            <h3 class="events__heading">Станьте пилотом нашей авиакомпании</h3>
+            <p class="events__text">Запишитесь на курс и станьте нашим статным сотрудником! 4-х недельный интенсив даст вам исчерпывающие знания о внутреннем распорядке, используемых самолетах и маршрутах</p>
+          </div>
+          <a href="enroll.html" class="events__enroll">Записаться</a>
+        </div>
       </div>
-    </form>
+    </section>
   </main>
 
   <div class="nav-overlay" id="nav-overlay"></div>
   <script src="scripts/catalog.js"></script>
   <script src="scripts/main.js"></script>
-  <script src="scripts/enroll.js"></script>
 </body>
 </html>

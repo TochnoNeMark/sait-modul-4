@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Билеты — OpenWing</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__bar">
+      <a href="index.html" class="header__logo" aria-label="OpenWing — на главную"></a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="index.html" class="nav__btn" data-page="index">Главная</a>
+        <a href="tickets.html" class="nav__btn" data-page="tickets">Билеты</a>
+        <a href="events.html" class="nav__btn" data-page="events">События</a>
+        <a href="reviews.html" class="nav__btn" data-page="reviews">Отзывы</a>
+        <a href="merch.html" class="nav__btn" data-page="merch">Мерч</a>
+      </nav>
+      <div class="header__actions">
+        <a href="cart.html" class="header__cart" id="cart-link">Корзина</a>
+        <a href="index.html" class="header__home" id="home-btn" aria-label="На главную, в начало"><svg viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M42.7193 22.6003H39.8417V44.9999H5.28822V22.6003H2.0088L22.3641 -9.96248e-05L42.7193 22.6003Z" fill="currentColor"/></svg></a>
+      </div>
+      <button type="button" class="header__burger" id="burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- DIV 1.2 — БИЛЕТЫ -->
+    <section class="section section--booking">
+      <h2 class="booking__title">Билеты</h2>
+
+      <div class="booking__tabs" role="tablist" aria-label="Тип операции">
+        <button type="button" class="tab is-active" aria-selected="true">Покупка</button>
+        <button type="button" class="tab" aria-selected="false">Регистрация</button>
+        <button type="button" class="tab" aria-selected="false">Бронирование</button>
+        <button type="button" class="tab" aria-selected="false">Статус рейса</button>
+        <button type="button" class="tab" aria-selected="false">Услуги</button>
+      </div>
+
+      <div class="booking__panel">
+        <div class="booking__toggles">
+          <button type="button" class="toggle is-active">Билет</button>
+          <button type="button" class="toggle">Трансфер</button>
+          <button type="button" class="toggle">Отель</button>
+        </div>
+
+        <form class="booking__form" id="booking-form" autocomplete="off">
+          <div class="field field--place" data-place="origin">
+            <button type="button" class="field__btn" aria-haspopup="listbox" aria-expanded="false">
+              <span class="field__value"></span>
+              <span class="field__code"></span>
+            </button>
+          </div>
+
+          <button type="button" class="swap" id="swap-btn" aria-label="Поменять «Откуда» и «Куда» местами">
+            <svg viewBox="0 0 58 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M2 4 H54 M48 -1 L55 4 L48 9" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M56 16 H4 M10 11 L3 16 L10 21" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </button>
+
+          <div class="field field--place" data-place="dest">
+            <button type="button" class="field__btn" aria-haspopup="listbox" aria-expanded="false">
+              <span class="field__value"></span>
+              <span class="field__code"></span>
+            </button>
+            <input type="hidden" id="dest-input" data-field="destination">
+          </div>
+
+          <div class="field field--date" data-date="depart">
+            <button type="button" class="field__btn" aria-haspopup="dialog" aria-expanded="false">
+              <span class="field__value field__value--placeholder">Туда (дата)</span>
+            </button>
+          </div>
+
+          <div class="field field--date" data-date="return">
+            <button type="button" class="field__btn" aria-haspopup="dialog" aria-expanded="false">
+              <span class="field__value field__value--placeholder">Обратно (дата)</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <button type="button" class="booking__submit" id="booking-reset">Найти</button>
+    </section>
+  </main>
+
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <script src="scripts/catalog.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/booking.js"></script>
+</body>
+</html>

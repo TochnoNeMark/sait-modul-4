@@ -11,6 +11,10 @@
   --maxw: 1420px;
   --pad: clamp(12px, 2.5vw, 24px);
   --header-h: clamp(72px, 7vw, 100px);
+  /* Единые размеры шрифта: заголовки / параграфы / текст кнопок */
+  --fs-h: clamp(30px, 4.2vw, 52px);
+  --fs-p: clamp(16px, 1.8vw, 22px);
+  --fs-btn: clamp(15px, 1.5vw, 20px);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -75,7 +79,7 @@ a { text-decoration: none; color: inherit; }
   background: var(--c-pill);
   border: 5px solid transparent;
   border-radius: 15px;
-  font-size: clamp(13px, 1.1vw, 16px);
+  font-size: var(--fs-btn);
   font-weight: 300;
   color: var(--c-text);
   white-space: nowrap;
@@ -106,7 +110,7 @@ a { text-decoration: none; color: inherit; }
   min-width: clamp(110px, 10.7vw, 154px);
   background: var(--c-pill);
   border-radius: 15px;
-  font-size: clamp(13px, 1.1vw, 16px);
+  font-size: var(--fs-btn);
   font-weight: 300;
   white-space: nowrap;
   transition: background .2s;
@@ -258,22 +262,6 @@ a { text-decoration: none; color: inherit; }
   font-weight: 500;
 }
 
-/* ===== ПЛЕЙСХОЛДЕРЫ (div 2–5) ===== */
-.section--placeholder {
-  min-height: 60vh;
-  display: grid;
-  place-items: center;
-  border: 2px dashed var(--c-pill);
-  border-radius: 24px;
-  margin-top: clamp(24px, 4vw, 48px);
-  background: #f5f8ff;
-}
-.placeholder__label {
-  font-size: clamp(20px, 3vw, 32px);
-  font-weight: 500;
-  color: var(--c-accent);
-  opacity: .6;
-}
 
 /* ===== DIV 2 — БИЛЕТЫ ===== */
 .section--booking { padding-top: clamp(16px, 3vw, 40px); }
@@ -285,7 +273,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 15px;
   padding: clamp(8px, 1vw, 14px) clamp(20px, 2.5vw, 40px);
   font-weight: 600;
-  font-size: clamp(28px, 4.4vw, 64px);
+  font-size: var(--fs-h);
   margin-bottom: clamp(16px, 2vw, 28px);
 }
 
@@ -305,7 +293,7 @@ a { text-decoration: none; color: inherit; }
   border-right: 1px solid #000;
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 600;
-  font-size: clamp(13px, 1.6vw, 30px);
+  font-size: var(--fs-btn);
   color: var(--c-white);
   cursor: pointer;
   transition: background .2s;
@@ -337,7 +325,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 999px;
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 300;
-  font-size: clamp(14px, 1.5vw, 24px);
+  font-size: var(--fs-btn);
   color: #000;
   cursor: pointer;
   transition: background .2s, font-weight .2s;
@@ -414,7 +402,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 11px;
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 600;
-  font-size: clamp(22px, 3vw, 45px);
+  font-size: var(--fs-btn);
   color: #000;
   cursor: pointer;
   transition: background .2s, transform .1s;
@@ -530,7 +518,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 15px;
   padding: clamp(8px, 1vw, 14px) clamp(20px, 2.5vw, 40px);
   font-weight: 600;
-  font-size: clamp(28px, 4.4vw, 64px);
+  font-size: var(--fs-h);
   margin-bottom: clamp(16px, 2vw, 28px);
 }
 .events__body {
@@ -566,13 +554,13 @@ a { text-decoration: none; color: inherit; }
 .events__heading {
   color: var(--c-white);
   font-weight: 700;
-  font-size: clamp(28px, 4.4vw, 64px);
+  font-size: var(--fs-h);
   line-height: 1.05;
 }
 .events__text {
   color: var(--c-white);
   font-weight: 400;
-  font-size: clamp(16px, 2.4vw, 36px);
+  font-size: var(--fs-p);
   line-height: 1.25;
 }
 .events__enroll {
@@ -586,7 +574,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--c-white);
   border-radius: 15px;
   font-weight: 600;
-  font-size: clamp(22px, 2.8vw, 40px);
+  font-size: var(--fs-btn);
   transition: background .2s, transform .1s;
 }
 .events__enroll:hover { background: #3f78ec; }
@@ -598,7 +586,7 @@ a { text-decoration: none; color: inherit; }
   min-height: calc(100vh - var(--header-h));
   background-image: linear-gradient(rgba(255,255,255,.25), rgba(255,255,255,.25)), url("../assets/images/div3-1/wing.webp");
   background-size: cover;
-  background-position: center;
+  background-position: 78% 38%;
   padding: clamp(24px, 5vw, 80px) var(--pad);
   display: flex;
   justify-content: center;
@@ -615,14 +603,14 @@ a { text-decoration: none; color: inherit; }
   border-radius: 15px;
   padding: clamp(18px, 2.4vw, 40px) clamp(20px, 3vw, 48px);
   font-weight: 700;
-  font-size: clamp(24px, 3.6vw, 51px);
+  font-size: var(--fs-h);
   text-align: center;
   line-height: 1.1;
 }
 .enroll__desc {
   color: var(--c-accent);
   font-weight: 500;
-  font-size: clamp(16px, 2.2vw, 32px);
+  font-size: var(--fs-p);
   line-height: 1.3;
   margin: clamp(16px, 2.2vw, 30px) clamp(8px, 1.6vw, 27px) clamp(20px, 3vw, 40px);
 }
@@ -659,7 +647,7 @@ a { text-decoration: none; color: inherit; }
   padding: clamp(10px, 1.2vw, 15px) clamp(28px, 3vw, 56px);
   font-family: var(--font);
   font-weight: 500;
-  font-size: clamp(18px, 2.2vw, 32px);
+  font-size: var(--fs-btn);
   cursor: pointer;
   transition: background .2s, transform .1s;
 }
@@ -682,7 +670,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 15px;
   padding: clamp(8px, 1vw, 14px) clamp(20px, 2.5vw, 40px);
   font-weight: 600;
-  font-size: clamp(28px, 4.4vw, 64px);
+  font-size: var(--fs-h);
   margin-bottom: clamp(16px, 2vw, 28px);
 }
 
@@ -725,7 +713,7 @@ a { text-decoration: none; color: inherit; }
   color: #000;
   width: 100%;
 }
-.review-form__name { font-weight: 600; font-size: clamp(16px, 1.6vw, 24px); flex: 1 1 160px; }
+.review-form__name { font-weight: 600; font-size: var(--fs-p); flex: 1 1 160px; }
 .review-form__text { font-weight: 400; font-size: clamp(15px, 1.5vw, 24px); padding-top: 4px; }
 .review-form__name::placeholder,
 .review-form__text::placeholder { color: #eaeaea; }
@@ -746,29 +734,20 @@ a { text-decoration: none; color: inherit; }
   padding: clamp(8px, 0.9vw, 13px) clamp(20px, 2vw, 36px);
   font-family: var(--font);
   font-weight: 600;
-  font-size: clamp(15px, 1.4vw, 20px);
+  font-size: var(--fs-btn);
   cursor: pointer;
   transition: background .2s, transform .1s;
 }
 .review-form__submit:hover { background: #3f78ec; }
 .review-form__submit:active { transform: scale(.97); }
 
-/* Рамка с лентой отзывов */
+/* Лента отзывов (бесконечная, в общем потоке страницы) */
 .reviews__pool {
-  border: 10px solid var(--c-pill);
-  border-radius: 15px;
-  padding: clamp(14px, 1.8vw, 28px);
-  height: clamp(420px, 50vw, 605px);
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: clamp(12px, 1.5vw, 24px);
-  scrollbar-width: thin;
-  scrollbar-color: var(--c-pill) transparent;
+  overflow-anchor: auto;
 }
-.reviews__pool:focus-visible { outline: 2px solid var(--c-header); outline-offset: 2px; }
-.reviews__pool::-webkit-scrollbar { width: 10px; }
-.reviews__pool::-webkit-scrollbar-thumb { background: var(--c-pill); border-radius: 6px; }
 
 /* Карточка отзыва */
 .review-card {
@@ -788,10 +767,10 @@ a { text-decoration: none; color: inherit; }
   flex-wrap: wrap;
   margin-bottom: clamp(6px, 0.8vw, 12px);
 }
-.review-card__name { font-weight: 600; font-size: clamp(16px, 1.6vw, 24px); }
+.review-card__name { font-weight: 600; font-size: var(--fs-p); }
 .review-card__text {
   font-weight: 400;
-  font-size: clamp(15px, 1.5vw, 24px);
+  font-size: var(--fs-p);
   line-height: 1.3;
   word-break: break-word;
 }
@@ -812,7 +791,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 15px;
   padding: clamp(8px, 1vw, 14px) clamp(20px, 2.5vw, 40px);
   font-weight: 600;
-  font-size: clamp(28px, 4.4vw, 64px);
+  font-size: var(--fs-h);
 }
 .merch__cats { display: flex; gap: clamp(8px, 1.2vw, 16px); flex-wrap: wrap; }
 .merch-cat {
@@ -823,7 +802,7 @@ a { text-decoration: none; color: inherit; }
   padding: clamp(8px, 1vw, 14px) clamp(16px, 2vw, 36px);
   font-family: var(--font);
   font-weight: 500;
-  font-size: clamp(14px, 1.4vw, 25px);
+  font-size: var(--fs-btn);
   cursor: pointer;
   transition: background .2s;
 }
@@ -868,7 +847,7 @@ a { text-decoration: none; color: inherit; }
 .merch-card__img img { width: 100%; height: auto; display: block; }
 .merch-card__desc {
   font-weight: 500;
-  font-size: clamp(12px, 1.05vw, 14px);
+  font-size: var(--fs-p);
   line-height: 1.3;
   color: #000;
 }
@@ -886,7 +865,7 @@ a { text-decoration: none; color: inherit; }
   padding: clamp(8px, 1vw, 12px);
   font-family: var(--font);
   font-weight: 500;
-  font-size: clamp(12px, 1.05vw, 14px);
+  font-size: var(--fs-btn);
   cursor: pointer;
   transition: background .2s, color .2s;
 }
@@ -904,7 +883,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: 15px;
   padding: clamp(8px, 1vw, 14px) clamp(24px, 3vw, 48px);
   font-weight: 600;
-  font-size: clamp(28px, 4.4vw, 64px);
+  font-size: var(--fs-h);
   margin-bottom: clamp(20px, 3vw, 40px);
   transition: background .2s;
 }
@@ -951,11 +930,11 @@ a { text-decoration: none; color: inherit; }
   border-radius: 15px;
   padding: clamp(12px, 1.4vw, 18px) clamp(18px, 2vw, 28px);
   font-weight: 600;
-  font-size: clamp(24px, 3.2vw, 48px);
+  font-size: var(--fs-h);
 }
 .product__desc {
   font-weight: 500;
-  font-size: clamp(18px, 2.6vw, 48px);
+  font-size: var(--fs-p);
   line-height: 1.25;
 }
 
@@ -998,7 +977,7 @@ a { text-decoration: none; color: inherit; }
   padding: clamp(14px, 1.6vw, 20px) clamp(20px, 2vw, 32px);
   font-family: var(--font);
   font-weight: 500;
-  font-size: clamp(20px, 2.6vw, 40px);
+  font-size: var(--fs-btn);
   cursor: pointer;
   transition: background .2s, transform .1s;
 }
@@ -1013,11 +992,11 @@ a { text-decoration: none; color: inherit; }
   border-radius: 15px;
   padding: clamp(8px, 1vw, 14px) clamp(24px, 3vw, 48px);
   font-weight: 600;
-  font-size: clamp(28px, 4.4vw, 64px);
+  font-size: var(--fs-h);
   margin-bottom: clamp(20px, 3vw, 40px);
 }
 .cart-list { display: flex; flex-direction: column; gap: clamp(12px, 1.5vw, 20px); }
-.cart-empty { font-size: clamp(16px, 2vw, 24px); color: #555; }
+.cart-empty { font-size: var(--fs-p); color: #555; }
 .cart-item {
   display: flex;
   align-items: center;
@@ -1030,8 +1009,8 @@ a { text-decoration: none; color: inherit; }
 .cart-item__img { flex: 0 0 auto; width: clamp(56px, 7vw, 90px); border-radius: 10px; overflow: hidden; }
 .cart-item__img img { width: 100%; height: auto; display: block; }
 .cart-item__info { flex: 1 1 auto; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.cart-item__name { font-weight: 600; font-size: clamp(16px, 1.6vw, 24px); }
-.cart-item__unit { font-size: clamp(13px, 1.2vw, 16px); color: #777; }
+.cart-item__name { font-weight: 600; font-size: var(--fs-p); }
+.cart-item__unit { font-size: var(--fs-p); color: #777; }
 .cart-item__count { font-weight: 600; font-size: clamp(16px, 1.6vw, 24px); color: var(--c-accent); }
 .cart-item__sum { font-weight: 700; font-size: clamp(16px, 1.8vw, 26px); min-width: clamp(60px, 7vw, 100px); text-align: right; }
 .cart-total {
