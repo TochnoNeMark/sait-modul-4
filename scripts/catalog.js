@@ -15,12 +15,30 @@
     "Чемодан объемом 30 литров. Корпус сделан из ударопрочного пластика, проходит калибраторы OpenWing и Аэрофлота.";
 
   window.PRODUCTS = [
-    { id: "chemodan-1", name: "Чемодан 1", volume: "30 л", volumeFull: "30 литров", price: 100, rating: 5, desc: BASE_DESC, img: BASE_IMG },
-    { id: "chemodan-2", name: "Чемодан 2", volume: "40 л", volumeFull: "40 литров", price: 150, rating: 5, desc: "Чемодан объемом 40 литров. Усиленные углы и телескопическая ручка, выдерживает перегрузки до 50 кг.", img: BASE_IMG },
-    { id: "chemodan-3", name: "Чемодан 3", volume: "20 л", volumeFull: "20 литров", price: 90, rating: 4, desc: "Компактный чемодан 20 литров для ручной клади. Помещается в любой багажный отсек OpenWing.", img: BASE_IMG },
-    { id: "chemodan-4", name: "Чемодан 4", volume: "60 л", volumeFull: "60 литров", price: 220, rating: 5, desc: "Вместительный чемодан 60 литров. Четыре сдвоенных колеса и кодовый замок TSA в комплекте.", img: BASE_IMG },
-    { id: "chemodan-5", name: "Чемодан 5", volume: "30 л", volumeFull: "30 литров", price: 130, rating: 4, desc: "Чемодан 30 литров с водоотталкивающим покрытием. Идеален для частых перелётов.", img: BASE_IMG },
-    { id: "chemodan-6", name: "Чемодан 6", volume: "45 л", volumeFull: "45 литров", price: 175, rating: 5, desc: "Премиальный чемодан 45 литров из поликарбоната. Лёгкий, прочный, с пожизненной гарантией.", img: BASE_IMG },
+    // Чемоданы
+    { id: "chemodan-1", category: "suitcase", name: "Чемодан 1", volume: "30 л", volumeFull: "30 литров", price: 100, rating: 5, desc: BASE_DESC, img: BASE_IMG },
+    { id: "chemodan-2", category: "suitcase", name: "Чемодан 2", volume: "40 л", volumeFull: "40 литров", price: 150, rating: 5, desc: "Чемодан объемом 40 литров. Усиленные углы и телескопическая ручка, выдерживает перегрузки до 50 кг.", img: BASE_IMG },
+    { id: "chemodan-3", category: "suitcase", name: "Чемодан 3", volume: "20 л", volumeFull: "20 литров", price: 90, rating: 4, desc: "Компактный чемодан 20 литров для ручной клади. Помещается в любой багажный отсек OpenWing.", img: BASE_IMG },
+    { id: "chemodan-4", category: "suitcase", name: "Чемодан 4", volume: "60 л", volumeFull: "60 литров", price: 220, rating: 5, desc: "Вместительный чемодан 60 литров. Четыре сдвоенных колеса и кодовый замок TSA в комплекте.", img: BASE_IMG },
+    { id: "chemodan-5", category: "suitcase", name: "Чемодан 5", volume: "30 л", volumeFull: "30 литров", price: 130, rating: 4, desc: "Чемодан 30 литров с водоотталкивающим покрытием. Идеален для частых перелётов.", img: BASE_IMG },
+    { id: "chemodan-6", category: "suitcase", name: "Чемодан 6", volume: "45 л", volumeFull: "45 литров", price: 175, rating: 5, desc: "Премиальный чемодан 45 литров из поликарбоната. Лёгкий, прочный, с пожизненной гарантией.", img: BASE_IMG },
+
+    // Подушки
+    { id: "pillow-1", category: "pillow", name: "Подушка 1", volume: "дорожная", volumeFull: "дорожная", price: 990, rating: 5, desc: "Дорожная подушка-кот для шеи с маской для сна в комплекте. Мягкий плюш и удобная поддержка в полёте.", img: "assets/images/div5/pillow-cat.webp" },
+    { id: "pillow-2", category: "pillow", name: "Подушка 2", volume: "дорожная", volumeFull: "дорожная", price: 1090, rating: 4, desc: "Дорожная подушка-акула для шеи с маской для сна. Объёмный плюш и эффектный дизайн.", img: "assets/images/div5/pillow-shark.webp" },
+    { id: "pillow-3", category: "pillow", name: "Подушка 3", volume: "эффект памяти", volumeFull: "с эффектом памяти", price: 1490, rating: 5, desc: "Дорожная подушка с эффектом памяти, маской для сна, берушами и чехлом. Анатомическая поддержка шеи.", img: "assets/images/div5/pillow-memory.webp" },
+
+    // Электроника
+    { id: "power-1", category: "electronics", name: "Повербанк 1", volume: "10000 мА·ч", volumeFull: "10000 мА·ч", price: 2490, rating: 5, desc: "Магнитный повербанк 10000 мА·ч с беспроводной зарядкой MagSafe. Цифровой индикатор заряда, порты USB-A и USB-C.", img: "assets/images/div5/power-magsafe.webp" },
+    { id: "power-2", category: "electronics", name: "Повербанк 2", volume: "20000 мА·ч", volumeFull: "20000 мА·ч", price: 2990, rating: 5, desc: "Повербанк 20000 мА·ч со встроенным кабелем USB-C и быстрой зарядкой. Дисплей точного заряда в процентах.", img: "assets/images/div5/power-cable.webp" },
+    { id: "power-3", category: "electronics", name: "Повербанк 3", volume: "10000 мА·ч", volumeFull: "10000 мА·ч", price: 3490, rating: 4, desc: "Компактный повербанк 10000 мА·ч с тремя портами и умным дисплеем оставшегося времени зарядки.", img: "assets/images/div5/power-anker.webp" },
+  ];
+
+  // Категории мерча для переключателя в разделе «Мерч».
+  window.CATEGORIES = [
+    { key: "suitcase", label: "Чемоданы" },
+    { key: "pillow", label: "Подушки" },
+    { key: "electronics", label: "Электроника" },
   ];
 
   // Доступные цвета товара (общие для страницы товара и корзины).
