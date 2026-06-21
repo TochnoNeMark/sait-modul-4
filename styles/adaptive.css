@@ -41,8 +41,36 @@
   /* Прячем текст «Корзина» на узких экранах не нужно — оставляем компактным */
   .header__cart { font-size: 13px; padding: 0 12px; }
 
-  .hero__pill--title { font-size: clamp(11px, 3.2vw, 16px); }
-  .hero__pill--price { font-size: clamp(18px, 6vw, 28px); }
+  /* Центральный баннер: высокий портретный по мобильному макету (≈340×585).
+     max-height страхует от чрезмерной высоты на крупных телефонах. */
+  .hero__banner {
+    aspect-ratio: 340 / 585;
+    max-height: 78vh;
+    border-radius: clamp(36px, 11vw, 56px);
+    background-position: 42% center;
+  }
+  .hero__pill {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 86%;
+    max-width: none;
+  }
+  .hero__pill--title {
+    top: 6.5%;
+    right: auto;
+    min-height: 0;
+    padding: clamp(14px, 4vw, 20px);
+    border-radius: clamp(28px, 9vw, 45px);
+    font-size: clamp(17px, 5.5vw, 24px);
+  }
+  .hero__pill--price {
+    bottom: 8%;
+    right: auto;
+    width: 76%;
+    padding: clamp(12px, 3vw, 18px);
+    border-radius: clamp(22px, 7vw, 36px);
+    font-size: clamp(30px, 10vw, 48px);
+  }
 
   .cities {
     gap: 24px 16px;
