@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const catsBox = document.getElementById("merch-cats");
   if (!grid || !window.PRODUCTS) return;
 
-  const esc = (s) => s.replace(/[&<>"']/g, (c) =>
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   const CATEGORIES = window.CATEGORIES || [{ key: "suitcase", label: "Чемоданы" }];

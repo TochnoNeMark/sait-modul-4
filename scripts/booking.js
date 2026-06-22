@@ -59,7 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const fmtDate = (d) => d ? `${d.day} ${MONTHS_GEN[d.month]} ${d.year}` : null;
-  const escAttr = (s) => String(s).replace(/"/g, "&quot;");
+  const escAttr = (s) => String(s).replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   /* ===================== ЗАКРЫТИЕ ПОПАПОВ ===================== */
   const closeAllPopups = () => {
@@ -272,13 +273,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function wireFlight() {
     const opts = AIRPORTS.map((a) => ({ label: `<b>${a.city}</b>, ${a.airport}`, sub: a.code, value: a }));
-    attachDropdown(panel.querySelector('[data-field="origin"]'), opts, () => state.origin, (v) => { state.origin = v; render(); syncDestInput(); });
-    attachDropdown(panel.querySelector('[data-field="dest"]'), opts, () => state.dest, (v) => { state.dest = v; render(); syncDestInput(); });
+    attachDropdown(panel.querySelector('[data-field="origin"]'), opts, () => state.origin, (v) => { state.origin = v; render(); });
+    attachDropdown(panel.querySelector('[data-field="dest"]'), opts, () => state.dest, (v) => { state.dest = v; render(); });
     attachCalendar(panel.querySelector('[data-field="depart"]'), () => state.depart, (v) => { state.depart = v; render(); });
     attachCalendar(panel.querySelector('[data-field="return"]'), () => state.return, (v) => { state.return = v; render(); }, true);
     document.getElementById("swap-btn").addEventListener("click", () => {
       [state.origin, state.dest] = [state.dest, state.origin];
-      syncDestInput();
       render();
     });
   }
@@ -370,11 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ===================== МОСТ ИЗ DIV 1 ===================== */
-  const syncDestInput = () => {
-    const el = document.getElementById("dest-input");
-    if (el) el.value = state.dest ? state.dest.city : "";
-  };
+  /* ===================== МОСТ ИЗ DIV 1: город из главной -> «Куда» ===================== */
   try {
     const saved = sessionStorage.getItem("openwing:destination");
     if (saved) {

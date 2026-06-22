@@ -129,7 +129,8 @@
       addReview({ name, text, rating: currentRating || 5 }, "top");
       form.reset();
       setRating(0);
-      window.scrollTo({ top: section.offsetTop - 80, behavior: "smooth" });
+      const top = (section instanceof HTMLElement ? section.offsetTop : 0) - 80;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
     });
 
     /* Автогенерация раз в 30 секунд — сверху */
@@ -148,7 +149,9 @@
         if (!nearBottom) return;
         loading = true;
         for (let i = 0; i < 5; i++) addReview(randomReview(), "bottom");
-        requestAnimationFrame(() => { loading = false; });
+        // Снимаем блокировку с задержкой, чтобы лента не росла лавинообразно,
+        // пока пользователь стоит у нижнего края (rAF для этого слишком быстрый).
+        setTimeout(() => { loading = false; }, 400);
       };
       window.addEventListener("scroll", onScroll, { passive: true });
     }

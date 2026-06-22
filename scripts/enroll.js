@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    form.reset();
+    // Редирект на главную сам очищает состояние формы — отдельный reset не нужен.
     window.location.href = "index.html";
   });
 });

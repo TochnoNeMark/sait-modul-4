@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.title = `${product.name} — OpenWing`;
 
   const imgEl = document.getElementById("product-img");
-  const imgWrap = document.querySelector(".product__left .product__image");
+  // Обёртка именно главного изображения (а не вложенных .product__image в свотчах).
+  const imgWrap = imgEl.closest(".product__image");
   imgEl.src = product.img;
   imgEl.alt = product.name;
   document.getElementById("product-title").textContent =

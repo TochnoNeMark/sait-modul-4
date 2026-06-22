@@ -7,6 +7,12 @@
   --c-logo: #ffffff;
   --c-text: #000;
   --c-white: #fff;
+  /* Производные оттенки (ховеры/состояния) — чтобы не дублировать hex по файлу */
+  --c-accent-hover: #3f78ec;
+  --c-add: #508bff;
+  --c-ok: #2ecc71;
+  --c-pill-hover: #b6cfff;
+  --c-home-hover: #b4ccff;
   --font: "Montserrat Alternates", sans-serif;
   --maxw: 1420px;
   --pad: clamp(12px, 2.5vw, 24px);
@@ -87,7 +93,7 @@ a { text-decoration: none; color: inherit; }
   white-space: nowrap;
   transition: border-color .2s, background .2s, font-weight .2s;
 }
-.nav__btn:hover { background: #b6cfff; }
+.nav__btn:hover { background: var(--c-pill-hover); }
 
 /* Активный раздел: белая обводка 5px + насыщенное начертание */
 .nav__btn.is-active {
@@ -117,20 +123,7 @@ a { text-decoration: none; color: inherit; }
   white-space: nowrap;
   transition: background .2s;
 }
-.header__cart:hover { background: #b6cfff; }
-
-.header__icon {
-  flex: 0 0 auto;
-  width: clamp(40px, 4.2vw, 60px);
-  height: clamp(40px, 4.2vw, 60px);
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--c-text);
-  display: grid;
-  place-items: center;
-}
-.header__icon svg { width: 100%; height: 100%; }
+.header__cart:hover { background: var(--c-pill-hover); }
 
 .header__home {
   flex: 0 0 auto;
@@ -303,7 +296,7 @@ a { text-decoration: none; color: inherit; }
 }
 .tab:last-child { border-right: none; }
 .tab.is-active { background: var(--c-header); }
-.tab:not(.is-active):hover { background: #b4ccff; }
+.tab:not(.is-active):hover { background: var(--c-home-hover); }
 
 /* Панель формы */
 .booking__panel {
@@ -333,7 +326,7 @@ a { text-decoration: none; color: inherit; }
   transition: background .2s, font-weight .2s;
 }
 .toggle.is-active { font-weight: 600; }
-.toggle:not(.is-active):hover { background: #b4ccff; }
+.toggle:not(.is-active):hover { background: var(--c-home-hover); }
 
 /* Строка полей */
 .booking__form {
@@ -409,7 +402,7 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
   transition: background .2s, transform .1s;
 }
-.booking__submit:hover { background: #b4ccff; }
+.booking__submit:hover { background: var(--c-home-hover); }
 .booking__submit:active { transform: scale(.97); }
 
 /* Текстовое поле в строке формы */
@@ -592,87 +585,16 @@ a { text-decoration: none; color: inherit; }
 .calendar__day.is-selected { background: var(--c-home); }
 .calendar__day.is-empty { visibility: hidden; cursor: default; }
 
-/* ===== DIV 3 — СОБЫТИЯ ===== */
-.section--events {
-  background: var(--c-home);
-  border-radius: 24px;
-  margin-top: clamp(24px, 4vw, 48px);
-}
-.events__title {
-  display: inline-flex;
-  align-items: center;
-  background: var(--c-white);
-  border-radius: 15px;
-  padding: clamp(8px, 1vw, 14px) clamp(20px, 2.5vw, 40px);
-  font-weight: 600;
-  font-size: var(--fs-h);
-  margin-bottom: clamp(16px, 2vw, 28px);
-}
-.events__body {
-  display: grid;
-  grid-template-columns: minmax(0, 595fr) minmax(0, 609fr);
-  gap: clamp(20px, 3vw, 56px);
-  align-items: stretch;
-}
-.events__poster {
-  display: block;
-  border-radius: 15px;
-  overflow: hidden;
-  transition: transform .3s, box-shadow .3s;
-}
-.events__poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.events__poster:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,.25); }
-
-.events__col {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(16px, 2vw, 30px);
-}
-.events__card {
-  flex: 1 1 auto;
-  border: 5px solid var(--c-white);
-  border-radius: 15px;
-  padding: clamp(20px, 3vw, 44px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: clamp(20px, 3vw, 40px);
-}
-.events__heading {
-  color: var(--c-white);
-  font-weight: 700;
-  font-size: var(--fs-h);
-  line-height: 1.05;
-}
-.events__text {
-  color: var(--c-white);
-  font-weight: 400;
-  font-size: var(--fs-p);
-  line-height: 1.25;
-}
-.events__enroll {
-  align-self: flex-end;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: clamp(220px, 24vw, 336px);
-  padding: clamp(12px, 1.4vw, 22px) clamp(24px, 3vw, 48px);
-  background: var(--c-accent);
-  color: var(--c-white);
-  border-radius: 15px;
-  font-weight: 600;
-  font-size: var(--fs-btn);
-  transition: background .2s, transform .1s;
-}
-.events__enroll:hover { background: #3f78ec; }
-.events__enroll:active { transform: scale(.98); }
-
-/* ===== О НАС (div 1.6) ===== */
+/* ===== СОБЫТИЯ (div 1.3) и О НАС (div 1.6) — общий паттерн ===== */
+/* about.html структурно повторяет events.html, поэтому стили общие;
+   ниже вынесены только реальные отличия: gap карточки и line-height текста. */
+.section--events,
 .section--about {
   background: var(--c-home);
   border-radius: 24px;
   margin-top: clamp(24px, 4vw, 48px);
 }
+.events__title,
 .about__title {
   display: inline-flex;
   align-items: center;
@@ -683,26 +605,32 @@ a { text-decoration: none; color: inherit; }
   font-size: var(--fs-h);
   margin-bottom: clamp(16px, 2vw, 28px);
 }
+.events__body,
 .about__body {
   display: grid;
   grid-template-columns: minmax(0, 595fr) minmax(0, 609fr);
   gap: clamp(20px, 3vw, 56px);
   align-items: stretch;
 }
+.events__poster,
 .about__poster {
   display: block;
   border-radius: 15px;
   overflow: hidden;
   transition: transform .3s, box-shadow .3s;
 }
+.events__poster img,
 .about__poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.events__poster:hover,
 .about__poster:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,.25); }
 
+.events__col,
 .about__col {
   display: flex;
   flex-direction: column;
   gap: clamp(16px, 2vw, 30px);
 }
+.events__card,
 .about__card {
   flex: 1 1 auto;
   border: 5px solid var(--c-white);
@@ -711,20 +639,25 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: clamp(14px, 1.6vw, 24px);
 }
+.events__card { gap: clamp(20px, 3vw, 40px); }
+.about__card { gap: clamp(14px, 1.6vw, 24px); }
+.events__heading,
 .about__heading {
   color: var(--c-white);
   font-weight: 700;
   font-size: var(--fs-h);
   line-height: 1.05;
 }
+.events__text,
 .about__text {
   color: var(--c-white);
   font-weight: 400;
   font-size: var(--fs-p);
-  line-height: 1.3;
 }
+.events__text { line-height: 1.25; }
+.about__text { line-height: 1.3; }
+.events__enroll,
 .about__cta {
   align-self: flex-end;
   display: inline-flex;
@@ -739,7 +672,9 @@ a { text-decoration: none; color: inherit; }
   font-size: var(--fs-btn);
   transition: background .2s, transform .1s;
 }
-.about__cta:hover { background: #3f78ec; }
+.events__enroll:hover,
+.about__cta:hover { background: var(--c-accent-hover); }
+.events__enroll:active,
 .about__cta:active { transform: scale(.98); }
 
 /* ===== СТРАНИЦА ЗАПИСИ (div 3.1) ===== */
@@ -789,7 +724,7 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: clamp(12px, 1.6vw, 22px);
 }
 .enroll__input::placeholder { color: var(--c-logo); }
-.enroll__input:focus { outline: 3px solid #3f78ec; outline-offset: 1px; }
+.enroll__input:focus { outline: 3px solid var(--c-accent-hover); outline-offset: 1px; }
 .enroll__input--area {
   min-height: clamp(120px, 14vw, 179px);
   resize: vertical;
@@ -813,7 +748,7 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
   transition: background .2s, transform .1s;
 }
-.enroll__submit:hover { background: #3f78ec; }
+.enroll__submit:hover { background: var(--c-accent-hover); }
 .enroll__submit:active { transform: scale(.97); }
 .enroll__note {
   flex: 0 1 auto;
@@ -900,7 +835,7 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
   transition: background .2s, transform .1s;
 }
-.review-form__submit:hover { background: #3f78ec; }
+.review-form__submit:hover { background: var(--c-accent-hover); }
 .review-form__submit:active { transform: scale(.97); }
 
 /* Лента отзывов (бесконечная, в общем потоке страницы) */
@@ -969,7 +904,7 @@ a { text-decoration: none; color: inherit; }
   transition: background .2s;
 }
 .merch-cat.is-active { font-weight: 700; }
-.merch-cat:not(.is-active):hover { background: #3f78ec; }
+.merch-cat:not(.is-active):hover { background: var(--c-accent-hover); }
 
 /* Сетка карточек (не прокручивается) */
 .merch__grid {
@@ -977,7 +912,11 @@ a { text-decoration: none; color: inherit; }
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(16px, 2vw, 36px);
 }
-.merch-card {
+/* Карточки товара (мерч) и услуги (тарифы) — общий визуальный паттерн.
+   svc-card повторяет merch-card; отличия услуг (квадратная картинка,
+   plus-вариант) вынесены в раздел «Тарифы» ниже. */
+.merch-card,
+.svc-card {
   border: 2.5px solid var(--c-accent);
   border-radius: 8px;
   overflow: hidden;
@@ -985,7 +924,8 @@ a { text-decoration: none; color: inherit; }
   flex-direction: column;
   background: var(--c-white);
 }
-.merch-card__head {
+.merch-card__head,
+.svc-card__head {
   background: var(--c-accent);
   color: var(--c-white);
   font-weight: 700;
@@ -993,7 +933,8 @@ a { text-decoration: none; color: inherit; }
   padding: clamp(14px, 1.6vw, 22px) clamp(14px, 1.6vw, 20px);
   text-align: center;
 }
-.merch-card__body {
+.merch-card__body,
+.svc-card__body {
   flex: 1 1 auto;
   display: flex;
   gap: clamp(12px, 1.6vw, 24px);
@@ -1007,18 +948,21 @@ a { text-decoration: none; color: inherit; }
   overflow: hidden;
 }
 .merch-card__img img { width: 100%; height: auto; display: block; }
-.merch-card__desc {
+.merch-card__desc,
+.svc-card__desc {
   font-weight: 500;
   font-size: var(--fs-p);
   line-height: 1.3;
   color: #000;
 }
-.merch-card__foot {
+.merch-card__foot,
+.svc-card__foot {
   display: flex;
   gap: clamp(10px, 1.4vw, 20px);
   padding: 0 clamp(14px, 1.8vw, 26px) clamp(16px, 2vw, 24px);
 }
-.merch-card__add, .merch-card__more {
+.merch-card__add, .merch-card__more,
+.svc-card__add, .svc-card__more {
   flex: 1 1 0;
   display: inline-flex;
   align-items: center;
@@ -1031,11 +975,16 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
   transition: background .2s, color .2s;
 }
-.merch-card__add { background: #508bff; color: var(--c-white); border: none; }
-.merch-card__add:hover { background: #3f78ec; }
-.merch-card__add.is-added { background: #2ecc71; }
-.merch-card__more { background: var(--c-white); color: #92b7ff; border: 1px solid #92b7ff; }
-.merch-card__more:hover { background: #f0f5ff; }
+.merch-card__add,
+.svc-card__add { background: var(--c-add); color: var(--c-white); border: none; }
+.merch-card__add:hover,
+.svc-card__add:hover { background: var(--c-accent-hover); }
+.merch-card__add.is-added,
+.svc-card__add.is-in { background: var(--c-ok); }
+.merch-card__more,
+.svc-card__more { background: var(--c-white); color: #92b7ff; border: 1px solid #92b7ff; }
+.merch-card__more:hover,
+.svc-card__more:hover { background: #f0f5ff; }
 
 /* ===== СТРАНИЦА ТОВАРА (div 5.1) ===== */
 .product__back {
@@ -1049,7 +998,7 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: clamp(20px, 3vw, 40px);
   transition: background .2s;
 }
-.product__back:hover { background: #b6cfff; }
+.product__back:hover { background: var(--c-pill-hover); }
 
 .product__grid {
   display: grid;
@@ -1132,7 +1081,7 @@ a { text-decoration: none; color: inherit; }
 .product__rating-label { font-weight: 500; font-size: clamp(22px, 2.6vw, 36px); }
 
 .product__add {
-  background: #508bff;
+  background: var(--c-add);
   color: var(--c-white);
   border: none;
   border-radius: 8px;
@@ -1143,9 +1092,9 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
   transition: background .2s, transform .1s;
 }
-.product__add:hover { background: #3f78ec; }
+.product__add:hover { background: var(--c-accent-hover); }
 .product__add:active { transform: scale(.98); }
-.product__add.is-added { background: #2ecc71; }
+.product__add.is-added { background: var(--c-ok); }
 
 /* ===== СТРАНИЦА КОРЗИНЫ ===== */
 .cart-page__title {
@@ -1202,7 +1151,7 @@ a { text-decoration: none; color: inherit; }
   cursor: pointer;
   transition: background .2s;
 }
-.cart-qty:hover { background: #b6cfff; }
+.cart-qty:hover { background: var(--c-pill-hover); }
 .cart-item__count { font-weight: 600; font-size: var(--fs-p); color: var(--c-accent); min-width: 1.5em; text-align: center; }
 .cart-item__sum { font-weight: 700; font-size: var(--fs-p); min-width: clamp(60px, 7vw, 100px); text-align: right; }
 .cart-item__remove {
@@ -1256,9 +1205,9 @@ a { text-decoration: none; color: inherit; }
   font-family: var(--font); font-weight: 600; font-size: var(--fs-btn);
   cursor: pointer; transition: background .2s, transform .1s;
 }
-.plus__cta:hover { background: #3f78ec; }
+.plus__cta:hover { background: var(--c-accent-hover); }
 .plus__cta:active { transform: scale(.98); }
-body.is-plus .plus__cta { background: #2ecc71; }
+body.is-plus .plus__cta { background: var(--c-ok); }
 body.is-plus .plus__cta:hover { background: #29b765; }
 
 /* Разделы услуг */
@@ -1270,33 +1219,13 @@ body.is-plus .plus__cta:hover { background: #29b765; }
 }
 .svc__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 36px); }
 
-/* Карточка услуги (как карточка мерча) */
-.svc-card {
-  border: 2.5px solid var(--c-accent); border-radius: 8px; overflow: hidden;
-  display: flex; flex-direction: column; background: var(--c-white);
-}
-.svc-card--plus { border-color: #2ecc71; }
-.svc-card__head {
-  background: var(--c-accent); color: var(--c-white); font-weight: 700;
-  font-size: clamp(15px, 1.3vw, 18px); padding: clamp(14px, 1.6vw, 22px) clamp(14px, 1.6vw, 20px); text-align: center;
-}
-.svc-card--plus .svc-card__head { background: #2ecc71; }
+/* Карточка услуги — базовый вид общий с .merch-card (см. раздел «Мерч»);
+   здесь только отличия услуг: квадратная картинка и plus-вариант. */
+.svc-card--plus { border-color: var(--c-ok); }
+.svc-card--plus .svc-card__head { background: var(--c-ok); }
 .svc-card__old { opacity: .7; font-weight: 500; }
-.svc-card__body { flex: 1 1 auto; display: flex; gap: clamp(12px, 1.6vw, 24px); padding: clamp(14px, 1.8vw, 26px); align-items: center; }
 .svc-card__img { flex: 0 0 auto; width: clamp(80px, 9vw, 120px); aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; }
 .svc-card__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.svc-card__desc { font-weight: 500; font-size: var(--fs-p); line-height: 1.3; color: #000; }
-.svc-card__foot { display: flex; gap: clamp(10px, 1.4vw, 20px); padding: 0 clamp(14px, 1.8vw, 26px) clamp(16px, 2vw, 24px); }
-.svc-card__add, .svc-card__more {
-  flex: 1 1 0; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px;
-  padding: clamp(8px, 1vw, 12px); font-family: var(--font); font-weight: 500; font-size: var(--fs-btn);
-  cursor: pointer; transition: background .2s, color .2s;
-}
-.svc-card__add { background: #508bff; color: var(--c-white); border: none; }
-.svc-card__add:hover { background: #3f78ec; }
-.svc-card__add.is-in { background: #2ecc71; }
-.svc-card__more { background: var(--c-white); color: #92b7ff; border: 1px solid #92b7ff; }
-.svc-card__more:hover { background: #f0f5ff; }
 
 /* Корзина услуг */
 .section--svc-cart { padding-top: clamp(16px, 2.5vw, 32px); }
@@ -1318,7 +1247,7 @@ body.is-plus .plus__cta:hover { background: #29b765; }
   background: var(--c-pill); border: none; border-radius: 8px; font-family: var(--font);
   font-weight: 600; font-size: var(--fs-btn); color: #000; cursor: pointer; transition: background .2s;
 }
-.svc-qty:hover { background: #b6cfff; }
+.svc-qty:hover { background: var(--c-pill-hover); }
 .svc-cart__count { font-weight: 600; font-size: var(--fs-p); color: var(--c-accent); min-width: 1.4em; text-align: center; }
 .svc-cart__sum { flex: 0 0 auto; font-weight: 700; font-size: var(--fs-p); min-width: clamp(56px, 6vw, 90px); text-align: right; }
 .svc-cart__del {
@@ -1352,11 +1281,11 @@ body.is-plus .plus__cta:hover { background: #29b765; }
 .svc-modal__price s { color: #b2b2b2; font-weight: 500; font-size: .55em; margin-right: .25em; }
 .svc-modal__desc { font-weight: 500; font-size: var(--fs-p); line-height: 1.3; }
 .svc-modal__add {
-  align-self: flex-start; background: #508bff; color: var(--c-white); border: none; border-radius: 8px;
+  align-self: flex-start; background: var(--c-add); color: var(--c-white); border: none; border-radius: 8px;
   padding: clamp(12px, 1.4vw, 18px) clamp(24px, 3vw, 44px); font-family: var(--font); font-weight: 500; font-size: var(--fs-btn);
   cursor: pointer; transition: background .2s, transform .1s;
 }
-.svc-modal__add:hover { background: #3f78ec; }
+.svc-modal__add:hover { background: var(--c-accent-hover); }
 .svc-modal__add:active { transform: scale(.98); }
 .svc-modal__close {
   position: absolute; top: clamp(10px, 1.2vw, 16px); right: clamp(10px, 1.2vw, 16px);
@@ -1364,7 +1293,7 @@ body.is-plus .plus__cta:hover { background: #29b765; }
   background: var(--c-pill); border: none; border-radius: 50%; font-size: clamp(18px, 2vw, 24px); color: #000;
   cursor: pointer; transition: background .2s;
 }
-.svc-modal__close:hover { background: #b6cfff; }
+.svc-modal__close:hover { background: var(--c-pill-hover); }
 
 
 /* ===== СТРАНИЦА 404 ===== */

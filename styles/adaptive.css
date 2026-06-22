@@ -110,17 +110,13 @@
   .calendar { width: min(360px, 94vw); }
 }
 
-/* ===== DIV 3 — адаптив ===== */
+/* ===== СОБЫТИЯ (div 1.3) и О НАС (div 1.6) — адаптив ===== */
 @media (max-width: 900px) {
-  .events__body { grid-template-columns: 1fr; }
-  .events__poster { max-height: 60vh; }
-  .events__enroll { align-self: stretch; }
-}
-
-/* ===== DIV 1.6 — адаптив ===== */
-@media (max-width: 900px) {
+  .events__body,
   .about__body { grid-template-columns: 1fr; }
+  .events__poster,
   .about__poster { max-height: 60vh; }
+  .events__enroll,
   .about__cta { align-self: stretch; }
 }
 
