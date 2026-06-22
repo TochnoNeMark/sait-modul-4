@@ -1150,3 +1150,96 @@ a { text-decoration: none; color: inherit; }
   font-size: var(--fs-h);
 }
 .cart-total b { color: var(--c-accent); }
+
+
+/* ===== СТРАНИЦА 404 ===== */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.section--e404 {
+  min-height: calc(100dvh - var(--header-h) - clamp(40px, 5vw, 72px));
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, var(--c-header) 0%, var(--c-pill) 100%);
+  border-radius: 24px;
+  margin-top: clamp(16px, 2.5vw, 32px);
+  padding: clamp(32px, 5vw, 72px) var(--pad);
+}
+
+.e404__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(20px, 3vw, 40px);
+  text-align: center;
+}
+
+.e404__code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 1.2vw, 18px);
+  font-size: clamp(120px, 26vw, 300px);
+  line-height: 1;
+}
+.e404__digit {
+  font-weight: 800;
+  font-size: 1em;
+  line-height: .8;
+  color: var(--c-white);
+}
+.e404__window { display: block; flex: 0 0 auto; }
+
+/* Порт-хол: высота привязана к размеру цифр (em от .e404__code) */
+.port {
+  display: block;
+  height: .85em;
+  width: auto;
+}
+.port .cl { transform-box: view-box; will-change: transform; }
+@keyframes port-drift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(390px); }
+}
+.port .cl1 { animation: port-drift 19s linear infinite; }
+.port .cl2 { animation: port-drift 27s linear infinite; animation-delay: -13s; }
+.port .cl3 { animation: port-drift 16s linear infinite; animation-delay: -7s; }
+.port .cl4 { animation: port-drift 31s linear infinite; animation-delay: -22s; }
+@media (prefers-reduced-motion: reduce) {
+  .port .cl { animation: none; transform: translateX(150px); }
+}
+
+.e404__msg {
+  color: var(--c-white);
+  font-weight: 500;
+  font-size: var(--fs-h);
+  line-height: 1.2;
+  max-width: 17ch;
+  min-height: 2.5em;
+}
+
+.e404__home-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: clamp(200px, 22vw, 300px);
+  padding: clamp(12px, 1.4vw, 22px) clamp(24px, 3vw, 48px);
+  background: var(--c-white);
+  color: var(--c-accent);
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: var(--fs-btn);
+  transition: transform .1s, box-shadow .2s;
+}
+.e404__home-link:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,.2); }
+.e404__home-link:active { transform: scale(.98); }

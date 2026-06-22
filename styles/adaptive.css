@@ -146,3 +146,10 @@
   .cart-item__sum { order: 4; margin-left: auto; min-width: 0; }
   .cart-item__remove { order: 5; flex: 1 0 100%; }
 }
+
+
+/* ===== СТРАНИЦА 404 — адаптив ===== */
+@media (max-width: 560px) {
+  .e404__code { gap: 2px; }
+  .e404__msg { min-height: 3em; }
+}
