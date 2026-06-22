@@ -142,11 +142,18 @@
 /* ===== DIV 5 / товар / корзина — адаптив ===== */
 @media (max-width: 1000px) {
   .merch__grid { grid-template-columns: repeat(2, 1fr); }
+  .svc__grid { grid-template-columns: repeat(2, 1fr); }
   .product__grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .merch__grid { grid-template-columns: 1fr; }
   .merch-card__foot { flex-direction: column; }
+  .svc__grid { grid-template-columns: 1fr; }
+  .svc-card__foot { flex-direction: column; }
+  .svc-modal__card { grid-template-columns: 1fr; }
+  .svc-cart__row { flex-wrap: wrap; }
+  .svc-cart__name { flex: 1 1 100%; }
+  .svc-cart__sum { margin-left: auto; }
   .cart-item { flex-wrap: wrap; }
   .cart-item__info { flex: 1 1 60%; }
   .cart-item__qty { order: 3; }
