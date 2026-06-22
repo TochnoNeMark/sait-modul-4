@@ -1310,13 +1310,13 @@ body.is-plus .plus__cta:hover { background: #29b765; }
   white-space: nowrap;
 }
 
+/* 404 — отдельная полноэкранная страница: без шапки, во всю высоту экрана, без прокрутки */
+.page-e404 { overflow: hidden; }
 .section--e404 {
-  min-height: calc(100dvh - var(--header-h) - clamp(40px, 5vw, 72px));
+  min-height: 100dvh;
   display: grid;
   place-items: center;
   background: var(--c-home);
-  border-radius: 24px;
-  margin-top: clamp(16px, 2.5vw, 32px);
   padding: clamp(32px, 5vw, 72px) var(--pad);
 }
 
