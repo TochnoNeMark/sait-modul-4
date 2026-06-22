@@ -4,7 +4,7 @@
   --c-pill: #a6c4ff;
   --c-home: #a5c3ff;
   --c-accent: #4d89ff;
-  --c-logo: #d9d9d9;
+  --c-logo: #ffffff;
   --c-text: #000;
   --c-white: #fff;
   --font: "Montserrat Alternates", sans-serif;
@@ -57,9 +57,11 @@ a { text-decoration: none; color: inherit; }
   flex: 0 0 auto;
   width: clamp(44px, 4.2vw, 60px);
   height: clamp(44px, 4.2vw, 60px);
-  background: var(--c-logo);
-  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: var(--c-logo);
 }
+.header__logo svg { height: 100%; width: auto; display: block; }
 
 /* Навигация */
 .nav {
