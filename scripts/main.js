@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---- Активный раздел по текущей странице ---- */
   const file = (location.pathname.split("/").pop() || "index.html").toLowerCase();
   const PAGE_BY_FILE = {
-    "": "index", "index.html": "index",
+    "about.html": "about",
     "tickets.html": "tickets",
     "events.html": "events", "enroll.html": "events",
     "reviews.html": "reviews",
