@@ -615,6 +615,7 @@ a { text-decoration: none; color: inherit; }
 .events__poster,
 .about__poster {
   display: block;
+  border: 5px solid var(--c-white);
   border-radius: 15px;
   overflow: hidden;
   transition: transform .3s, box-shadow .3s;
