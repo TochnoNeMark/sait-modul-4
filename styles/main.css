@@ -1170,7 +1170,7 @@ a { text-decoration: none; color: inherit; }
   min-height: calc(100dvh - var(--header-h) - clamp(40px, 5vw, 72px));
   display: grid;
   place-items: center;
-  background: linear-gradient(180deg, var(--c-header) 0%, var(--c-pill) 100%);
+  background: var(--c-home);
   border-radius: 24px;
   margin-top: clamp(16px, 2.5vw, 32px);
   padding: clamp(32px, 5vw, 72px) var(--pad);
