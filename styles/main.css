@@ -136,14 +136,14 @@ a { text-decoration: none; color: inherit; }
   flex: 0 0 auto;
   width: clamp(40px, 4.2vw, 60px);
   height: clamp(40px, 4.2vw, 60px);
-  background: var(--c-home);
-  border-radius: 50%;
   display: grid;
   place-items: center;
-  transition: background .2s;
+  color: var(--c-white);
+  transition: opacity .2s, transform .1s;
 }
-.header__home:hover { background: #b6cfff; }
-.header__home svg { width: 62%; height: 62%; }
+.header__home:hover { opacity: .85; }
+.header__home:active { transform: scale(.94); }
+.header__home svg { width: 82%; height: 82%; }
 
 /* Бургер — только на мобильных */
 .header__burger {
